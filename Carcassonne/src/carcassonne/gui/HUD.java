@@ -7,6 +7,7 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.asset.AssetManager;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
+import com.jme3.input.controls.ActionListener;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState.BlendMode;
 import com.jme3.math.ColorRGBA;
@@ -26,7 +27,7 @@ import com.jme3.scene.shape.Box;
 public class HUD
 {
 
-	public HUD(Node guiNode, BitmapFont guiFont, Main app)
+	public HUD(Node guiNode, BitmapFont guiFont, GUIManager app)
 	{
 		this.guiNode = guiNode;
 		this.guiFont = guiFont;
@@ -40,7 +41,7 @@ public class HUD
 
 	private Node guiNode;
 	private BitmapFont guiFont;
-	private Main app;
+	private GUIManager app;
 
 	/**
 	 * Inititialisiert die GUI objekte
@@ -69,7 +70,7 @@ public class HUD
 		hudText.setLocalTranslation((float)width - 2 * size, (float)height - 2 * size, 0); // position
 		guiNode.attachChild(hudText);
 	}
-
+	
 	public void onUpdate()
 	{
 
