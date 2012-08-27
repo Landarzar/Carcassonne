@@ -1,5 +1,7 @@
 package carcassonne.gui;
 
+import carcassonne.model.Karte;
+
 import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState.BlendMode;
@@ -14,7 +16,7 @@ import com.jme3.texture.Texture;
  * 
  * @author Landarzar
  */
-public class CardView
+public class KarteView extends Karte
 {
 
 	private Box shape;
@@ -42,7 +44,7 @@ public class CardView
 		return texture;
 	}
 
-	public CardView(Texture texture)
+	public KarteView(Texture texture)
 	{
 		this.texture = texture;
 		this.init = false;

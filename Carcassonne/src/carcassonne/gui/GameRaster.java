@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class GameRaster {
 
-    private HashMap<Integer, CardView> map;
+    private HashMap<Integer, KarteView> map;
     private static final int MOD = 1000;
     private AssetManager assetManager;
 
@@ -24,12 +24,12 @@ public class GameRaster {
     private Node node;
 
     public GameRaster(AssetManager assetM, Node node) {
-        map = new HashMap<Integer, CardView>();
+        map = new HashMap<Integer, KarteView>();
         this.assetManager = assetM;
         this.node = node;
     }
 
-    public boolean insert(int x, int y, CardView card) {
+    public boolean insert(int x, int y, KarteView card) {
         if (isSet(x, y)) {
             return false;
         }
@@ -43,7 +43,7 @@ public class GameRaster {
         map.remove(calcKey(x, y));
     }
 
-    public void remove(CardView view) {
+    public void remove(KarteView view) {
         // TODO: implement
 
         throw new UnsupportedOperationException("Not implemented jet");
@@ -53,11 +53,11 @@ public class GameRaster {
         return map.containsKey(calcKey(x, y));
     }
 
-    public CardView get(int x, int y) {
+    public KarteView get(int x, int y) {
         return map.get(calcKey(x, y));
     }
 
-    public boolean contains(CardView view) {
+    public boolean contains(KarteView view) {
         return map.containsValue(view);
     }
     

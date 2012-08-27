@@ -39,7 +39,7 @@ public class Main extends SimpleApplication {
         app.setShowSettings(false);
         app.start();
     }
-    private LinkedList<CardView> views;
+    private LinkedList<KarteView> views;
     private GameRaster raster;
     private Node spielfeld;
     private Geometry geo;
@@ -51,10 +51,10 @@ public class Main extends SimpleApplication {
 
         // Init Startkarte
 
-        CardView view = new CardView(CardFactory.City1Street2Gerade);
-        CardView view1 = new CardView(CardFactory.getTexture());
-        CardView view2 = new CardView(CardFactory.getTexture());
-        CardView view3 = new CardView(CardFactory.getTexture());
+        KarteView view = new KarteView(CardFactory.City1Street2Gerade);
+        KarteView view1 = new KarteView(CardFactory.getTexture());
+        KarteView view2 = new KarteView(CardFactory.getTexture());
+        KarteView view3 = new KarteView(CardFactory.getTexture());
 
         raster.insert(0, 0, view);
         raster.insert(0, 1, view1);
@@ -106,12 +106,16 @@ public class Main extends SimpleApplication {
         initGameStuff();
         initInput();
 
-        Spatial figure = assetManager.loadModel("assets/Models/fig.j3o");
+        figure = assetManager.loadModel("assets/Models/fig.j3o");
         figure.setLocalScale(0.2f);
         figure.setLocalTranslation(0, 2f, 8f);
-        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md"); // default material
+        Material mat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md"); // default material
         //mat.setColor("Color", ColorRGBA.randomColor());
         mat.setTexture("NormalMap", assetManager.loadTexture("Textures/Terrain/Pond/Pond_normal.png"));
+        mat.setBoolean("UseMaterialColors",true);
+        mat.setColor("Specular",ColorRGBA.White);
+        mat.setColor("Diffuse",ColorRGBA.White);
+        mat.setFloat("Shininess", 5f); // [1,128]  
         figure.setMaterial(mat);
         rootNode.attachChild(figure);
 
@@ -123,6 +127,8 @@ public class Main extends SimpleApplication {
 
         hud = new HUD(guiNode, guiFont, this);
     }
+    
+    Spatial figure;
 
     @Override
     public void simpleUpdate(float tpf) {
@@ -143,6 +149,9 @@ public class Main extends SimpleApplication {
         }
 
         cam.setLocation(pos);
+        
+        figure.rotate(1.5f*tpf, 2f*tpf, .5f*tpf);
+        
     }
 
     @Override
@@ -226,7 +235,7 @@ public class Main extends SimpleApplication {
                     System.out.println("Select: " + results.getClosestCollision().getGeometry().getName());
                     if (results.getClosestCollision().getGeometry() == geo) {
 
-                        CardView view1 = new CardView(CardFactory.getTexture());
+                        KarteView view1 = new KarteView(CardFactory.getTexture());
 
                         raster.insert(-1, 0, view1);
                         spielfeld.detachChild(geo);
