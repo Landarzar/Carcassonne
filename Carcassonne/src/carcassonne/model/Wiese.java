@@ -25,4 +25,10 @@ public class Wiese  extends SpielObjekt {
 		
 	}
 
+	@Override
+	public void merge(SpielObjekt other) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

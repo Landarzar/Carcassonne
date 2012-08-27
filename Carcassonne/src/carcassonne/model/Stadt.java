@@ -22,4 +22,10 @@ public class Stadt  extends SpielObjekt{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void merge(SpielObjekt other) {
+		// TODO Auto-generated method stub
+		
+	}
 }
