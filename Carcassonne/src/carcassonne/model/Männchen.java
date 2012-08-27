@@ -11,6 +11,11 @@ public class Männchen {
 	private SpielObjekt objekt;
 	private int wert;
 
+	public Männchen(Spieler spieler) {
+		this.spieler = spieler;
+		this.wert = 1;
+	}
+	
 	public Männchen(Spieler spieler, int wert) {
 		this.spieler = spieler;
 		this.wert = wert;

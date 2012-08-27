@@ -24,6 +24,11 @@ public abstract class SpielObjekt {
 	}
 	
 	
+	public LinkedList<Karte> getKarten() {
+		return karten;
+	}
+
+
 	public abstract void Scoring(boolean ende);
 	
 	public abstract void merge(SpielObjekt other);
@@ -62,6 +67,17 @@ public abstract class SpielObjekt {
 		}
 		return bestP;
 		
+	}
+	protected void changeref(SpielObjekt other) {
+		for (Karte kat:other.getKarten()) {
+			for (int i =0; i< 4; i++) {
+				for(int j =0;i<3;j++) {
+					if (kat.getSide(i)[j] == other) kat.getSide(i)[j] = this;
+				}
+				
+			}
+			if (kat.getMiddle() == other) kat.setMiddle(this);
+		}
 	}
 	
 }

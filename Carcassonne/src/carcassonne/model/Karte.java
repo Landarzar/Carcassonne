@@ -80,7 +80,7 @@ public abstract class Karte {
 		for(int j=0;j<4;j++) {
 			if (nachbarn[j] != null) {
 				SpielObjekt[] otherside = nachbarn[j].getSide((2+j)%4);
-				for(int i=0;i<4;i++) {
+				for(int i=0;i<3;i++) {
 					this.sides[j][i].merge(otherside[i]);
 				}
 			}
