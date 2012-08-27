@@ -1,4 +1,4 @@
-package net.game.carcassonne;
+package carcassonne.gui;
 /**
  * 
  */

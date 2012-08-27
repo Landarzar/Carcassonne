@@ -1,4 +1,4 @@
-package net.game.carcassonne;
+package carcassonne.gui;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.texture.Texture;
