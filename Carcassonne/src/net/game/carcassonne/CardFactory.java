@@ -13,53 +13,53 @@ public class CardFactory
 
     static void Init(AssetManager assetManager)
     {
-        City1Street2 = assetManager.loadTexture("Textures/Cards/City1Street2.png");
+        City1Street2 = assetManager.loadTexture("assets/Textures/Cards/City1Street2.png");
 
-        City1Street2Gerade = assetManager.loadTexture("Textures/Cards/City1Street2Gerade.png");
+        City1Street2Gerade = assetManager.loadTexture("assets/Textures/Cards/City1Street2Gerade.png");
 
-        City1Street2Right = assetManager.loadTexture("Textures/Cards/City1Street2Right.png");
+        City1Street2Right = assetManager.loadTexture("assets/Textures/Cards/City1Street2Right.png");
 
-        City1Street3 = assetManager.loadTexture("Textures/Cards/City1Street3.png");
+        City1Street3 = assetManager.loadTexture("assets/Textures/Cards/City1Street3.png");
 
-        City1Wiese = assetManager.loadTexture("Textures/Cards/City1Wiese.png");
+        City1Wiese = assetManager.loadTexture("assets/Textures/Cards/City1Wiese.png");
 
-        City2Conn = assetManager.loadTexture("Textures/Cards/City2Conn.png");
+        City2Conn = assetManager.loadTexture("assets/Textures/Cards/City2Conn.png");
 
-        City2SplitWiese = assetManager.loadTexture("Textures/Cards/City2SplitWiese.png");
+        City2SplitWiese = assetManager.loadTexture("assets/Textures/Cards/City2SplitWiese.png");
 
-        City2SplitWiese2 = assetManager.loadTexture("Textures/Cards/City2SplitWiese2.png");
+        City2SplitWiese2 = assetManager.loadTexture("assets/Textures/Cards/City2SplitWiese2.png");
 
-        City2Street2 = assetManager.loadTexture("Textures/Cards/City2Street2.png");
+        City2Street2 = assetManager.loadTexture("assets/Textures/Cards/City2Street2.png");
 
-        City2WappenConn = assetManager.loadTexture("Textures/Cards/City2WappenConn.png");
+        City2WappenConn = assetManager.loadTexture("assets/Textures/Cards/City2WappenConn.png");
 
-        City2WappenStreet2 = assetManager.loadTexture("Textures/Cards/City2WappenStreet2.png");
+        City2WappenStreet2 = assetManager.loadTexture("assets/Textures/Cards/City2WappenStreet2.png");
 
-        City2WappenWiese = assetManager.loadTexture("Textures/Cards/City2WappenWiese.png");
+        City2WappenWiese = assetManager.loadTexture("assets/Textures/Cards/City2WappenWiese.png");
 
-        City2Wiese = assetManager.loadTexture("Textures/Cards/City2Wiese.png");
+        City2Wiese = assetManager.loadTexture("assets/Textures/Cards/City2Wiese.png");
 
-        City3Street = assetManager.loadTexture("Textures/Cards/City3Street.png");
+        City3Street = assetManager.loadTexture("assets/Textures/Cards/City3Street.png");
 
-        City3WappenStreet = assetManager.loadTexture("Textures/Cards/City3WappenStreet.png");
+        City3WappenStreet = assetManager.loadTexture("assets/Textures/Cards/City3WappenStreet.png");
 
-        City3Wiese = assetManager.loadTexture("Textures/Cards/City3Wiese.png");
+        City3Wiese = assetManager.loadTexture("assets/Textures/Cards/City3Wiese.png");
 
-        City3WappenWiese = assetManager.loadTexture("Textures/Cards/City3WappenWiese.png");
+        City3WappenWiese = assetManager.loadTexture("assets/Textures/Cards/City3WappenWiese.png");
 
-        City4Wappen = assetManager.loadTexture("Textures/Cards/City4Wappen.png");
+        City4Wappen = assetManager.loadTexture("assets/Textures/Cards/City4Wappen.png");
 
-        Kloster = assetManager.loadTexture("Textures/Cards/Kloster.png");
+        Kloster = assetManager.loadTexture("assets/Textures/Cards/Kloster.png");
 
-        KlosterStreet = assetManager.loadTexture("Textures/Cards/KlosterStreet.png");
+        KlosterStreet = assetManager.loadTexture("assets/Textures/Cards/KlosterStreet.png");
 
-        Street2 = assetManager.loadTexture("Textures/Cards/Street2.png");
+        Street2 = assetManager.loadTexture("assets/Textures/Cards/Street2.png");
 
-        Street2Left = assetManager.loadTexture("Textures/Cards/Street2Left.png");
+        Street2Left = assetManager.loadTexture("assets/Textures/Cards/Street2Left.png");
 
-        Street3 = assetManager.loadTexture("Textures/Cards/Street3.png");
+        Street3 = assetManager.loadTexture("assets/Textures/Cards/Street3.png");
 
-        Street4 = assetManager.loadTexture("Textures/Cards/Street4.png");
+        Street4 = assetManager.loadTexture("assets/Textures/Cards/Street4.png");
     }
     public static Texture City1Street2;
     public static Texture City1Street2Gerade;

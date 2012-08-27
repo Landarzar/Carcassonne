@@ -94,7 +94,7 @@ public class Main extends SimpleApplication {
         initGameStuff();
         initInput();
 
-        Spatial figure = assetManager.loadModel("Models/fig.j3o");
+        Spatial figure = assetManager.loadModel("assets/Models/fig.j3o");
         figure.setLocalScale(0.2f);
         figure.setLocalTranslation(0, 2f, 8f);
         Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md"); // default material
