@@ -110,6 +110,8 @@ public class Main extends SimpleApplication {
         figure.setLocalScale(0.2f);
         figure.setLocalTranslation(0, 2f, 8f);
         Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md"); // default material
+        //mat.setColor("Color", ColorRGBA.randomColor());
+        mat.setTexture("NormalMap", assetManager.loadTexture("Textures/Terrain/Pond/Pond_normal.png"));
         figure.setMaterial(mat);
         rootNode.attachChild(figure);
 

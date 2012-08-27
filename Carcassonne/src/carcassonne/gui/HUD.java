@@ -47,14 +47,6 @@ public class HUD
 	 */
 	private void initObjects(AssetManager assetManager)
 	{
-		/** Test HUD */
-		BitmapText hudText = new BitmapText(guiFont, false);
-		hudText.setSize(guiFont.getCharSet().getRenderedSize()); // font size
-		hudText.setColor(ColorRGBA.Blue); // font color
-		hudText.setText("You can write any string here"); // the text
-		hudText.setLocalTranslation(300, hudText.getLineHeight(), 0); // position
-		guiNode.attachChild(hudText);
-
 		int width = app.getWidth();
 		int height = app.getHeight();
 		float size = 100f;
@@ -68,6 +60,14 @@ public class HUD
 		geometry.setMaterial(material);
 		
 		guiNode.attachChild(geometry);
+		
+		/** Test HUD */
+		BitmapText hudText = new BitmapText(guiFont, false);
+		hudText.setSize(guiFont.getCharSet().getRenderedSize()); // font size
+		hudText.setColor(ColorRGBA.Red); // font color
+		hudText.setText("72"); // the text
+		hudText.setLocalTranslation((float)width - 2 * size, (float)height - 2 * size, 0); // position
+		guiNode.attachChild(hudText);
 	}
 
 	public void onUpdate()
