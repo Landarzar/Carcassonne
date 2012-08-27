@@ -17,10 +17,25 @@ public class Spiel {
 	private static final int MOD = 1000;
 	private Stack<Karte> kartenstapel;
 	
-	public Spiel(Stack<Karte> kartenstapel) {
+	private static Spiel instance = null;
+	
+	
+	public static Spiel getInstance() {
+		 return instance;
+	 }
+	
+	public static void makeInstance(Stack<Karte> kartenstapel) {
+		instance = new Spiel(kartenstapel);
+	}
+	
+	private Spiel(Stack<Karte> kartenstapel) {
 		map = new HashMap<Integer, Karte>();
 		this.kartenstapel = kartenstapel;
 		this.insertKarte(0, 0, this.kartenstapel.pop());
+	}
+	
+	protected boolean hasPosi(int x, int y) {
+		return map.containsKey(calcKey(x, y));
 	}
 	
 	private void insertKarte(int x, int y,Karte karte)
@@ -41,7 +56,7 @@ public class Spiel {
      @param x ist die x Kordinate der aktuellen Karte
      @param y ist die y Karte der aktullen Karte
      @param z ist die Ausrichtung der aktuellen Karte wobei 0 nicht gedreht ist und x ist x mal nach rechts gedreht.
-     @return true wenn einfŸgen erfolgreich ansonsten False
+     @return true wenn einfï¿½gen erfolgreich ansonsten False
     **/
     public boolean put(int x, int y, int z) {
     	if(map.containsKey(calcKey(x, y)))

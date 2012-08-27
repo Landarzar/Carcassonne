@@ -25,6 +25,12 @@ public abstract class Karte {
 		this.y = y;
 	}
 	
+	public int[] getKordinaten() {
+		int [] ret = new int[2];
+		ret[0] = this.x;
+		ret[1] = this.y;
+		return ret;
+	}
 	
 	public SpielObjekt[] getSide(int kante)
 	{

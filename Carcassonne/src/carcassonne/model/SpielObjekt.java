@@ -22,7 +22,7 @@ public abstract class SpielObjekt {
 	}
 	
 	
-	public abstract void Scoring();
+	public abstract void Scoring(boolean ende);
 	
 	public abstract void merge(SpielObjekt other);
 	public boolean isBelegbar()

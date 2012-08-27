@@ -25,4 +25,7 @@ public class Männchen {
 	public SpielObjekt getObjekt() {
 		return this.objekt;
 	}
+	public void release() {
+		
+	}
 }
