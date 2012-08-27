@@ -2,31 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/eventbus.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jbullet.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jinput.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-blender.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-core.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-desktop.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-effects.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-jbullet.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-jogg.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-lwjgl.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-lwjgl-natives.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-networking.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-niftygui.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-plugins.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-terrain.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/jME3-testdata.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/j-ogg-oggd.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/j-ogg-vorbisd.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/lwjgl.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/nifty.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/nifty-default-controls.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/nifty-examples.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/nifty-style-black.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/stack-alloc.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/vecmath.jar"/>
-	<classpathentry kind="lib" path="/home/landarzar/Download/lib/xmlpull-xpp3.jar"/>
+	<classpathentry kind="lib" path="H:/Programme/jmonkey/jMonkeyEngine3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

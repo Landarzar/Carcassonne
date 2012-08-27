@@ -43,6 +43,8 @@ public class Main extends SimpleApplication {
     private GameRaster raster;
     private Node spielfeld;
     private Geometry geo;
+    
+    private HUD hud;
 
     private void initGameStuff() {
         raster = new GameRaster(assetManager, spielfeld);
@@ -66,6 +68,16 @@ public class Main extends SimpleApplication {
         material.setColor("Color", ColorRGBA.Red);
         geo.setMaterial(material);
         spielfeld.attachChild(geo);
+    }
+    
+    public int getHeight()
+    {
+    	return settings.getHeight();
+    }
+    
+    public int getWidth()
+    {
+    	return settings.getWidth();
     }
 
     private void initInput() {
@@ -107,17 +119,7 @@ public class Main extends SimpleApplication {
         sun.setColor(ColorRGBA.White);
         rootNode.addLight(sun);
 
-        /** Test HUD */
-        BitmapText hudText = new BitmapText(guiFont, false);
-        hudText.setSize(guiFont.getCharSet().getRenderedSize());      // font size
-        hudText.setColor(ColorRGBA.Blue);                             // font color
-        hudText.setText("You can write any string here");             // the text
-        hudText.setLocalTranslation(300, hudText.getLineHeight(), 0); // position
-        guiNode.attachChild(hudText);
-
-        /** Stats off & Frames on */
-        setDisplayStatView(false);
-        setDisplayFps(true);
+        hud = new HUD(guiNode, guiFont, this);
     }
 
     @Override

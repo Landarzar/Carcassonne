@@ -5,7 +5,7 @@ import com.jme3.texture.Texture;
 import java.util.Random;
 
 /**
- *
+ * TODO: Remove
  * @author Landarzar
  */
 public class CardFactory
