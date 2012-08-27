@@ -1,14 +1,8 @@
 package carcassonne.gui;
 
 import com.jme3.app.SimpleApplication;
-import com.jme3.input.controls.KeyTrigger;
-import com.jme3.input.controls.MouseAxisTrigger;
-import com.jme3.input.controls.MouseButtonTrigger;
-import com.jme3.light.DirectionalLight;
-import com.jme3.material.Material;
-import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
-import com.jme3.scene.Node;
+import com.jme3.font.BitmapFont;
+import com.jme3.input.MouseInput;
 import com.jme3.system.AppSettings;
 
 public class GUIManager extends SimpleApplication
@@ -32,6 +26,16 @@ public class GUIManager extends SimpleApplication
     }
     
     private SpielScreen spielScreen;
+    
+    public BitmapFont getGUIFont()
+    {
+    	return this.guiFont;
+    }
+    
+    public MouseInput getMouseInput()
+    {
+    	return mouseInput;    	
+    }
 
 	@Override
 	public void simpleInitApp()

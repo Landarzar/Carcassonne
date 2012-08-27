@@ -52,7 +52,7 @@ public class KarteView extends Karte
 
 	private boolean init = false;
 
-	public void initCard(AssetManager assetManager, Node node, float x, float y)
+	public void init(AssetManager assetManager, Node node, float x, float y)
 	{
 		shape = new Box(new Vector3f(x, y, 8f), 0.3f, 0.3f, 0.01f);
 		geometry = new Geometry(texture.getName(), shape);

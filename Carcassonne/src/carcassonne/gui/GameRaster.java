@@ -34,7 +34,7 @@ public class GameRaster {
             return false;
         }
         
-        card.initCard(assetManager, node, x * 0.62f, y * 0.62f);
+        card.init(assetManager, node, x * 0.62f, y * 0.62f);
 
         return true;
     }
