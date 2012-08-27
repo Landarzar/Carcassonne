@@ -22,4 +22,9 @@ public abstract class SpielObjekt {
 	
 	
 	public abstract void Scoring();
+	
+	public boolean isBelegbar()
+	{
+		return männchen.isEmpty();
+	}
 }
