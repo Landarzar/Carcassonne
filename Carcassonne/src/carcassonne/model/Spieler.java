@@ -1,5 +1,9 @@
 package carcassonne.model;
 
+/**
+ * @author Fabianexe
+ *
+ */
 public class Spieler {
 	
 	protected int punkte;

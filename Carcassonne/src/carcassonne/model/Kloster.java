@@ -4,7 +4,7 @@
 package carcassonne.model;
 
 /**
- * @author landarzar
+ * @author Fabianexe
  * 
  */
 public class Kloster extends SpielObjekt {
@@ -24,7 +24,8 @@ public class Kloster extends SpielObjekt {
 	 */
 	@Override
 	public void Scoring(boolean ende) {
-		int[] kordinaten = this.karte.getKordinaten();
+		if (this.isscored) return;
+		int[] kordinaten = this.karten.getFirst().getKordinaten();
 		int sum = 1;
 		if (Spiel.getInstance().hasPosi(kordinaten[0]-1, kordinaten[1]-1)) sum +=1;
 		if (Spiel.getInstance().hasPosi(kordinaten[0], kordinaten[1]-1)) sum +=1;
@@ -40,12 +41,27 @@ public class Kloster extends SpielObjekt {
 		for(Männchen man:this.männchen) {
 			man.release();
 		}
+		this.isscored = true;
 	}
 
 	@Override
 	public void merge(SpielObjekt other) {
 		// Gibt es nicht und wenn doch hast du das Spiel nicht verstanden!
 
+	}
+
+	@Override
+	public boolean isComplete() {
+		int[] kordinaten = this.karten.getFirst().getKordinaten();
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]-1, kordinaten[1]-1)) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0], kordinaten[1]-1)) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]+1, kordinaten[1]-1)) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]-1, kordinaten[1])) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]+1, kordinaten[1])) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]-1, kordinaten[1]+1)) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0], kordinaten[1]+1)) return false;
+		if (!Spiel.getInstance().hasPosi(kordinaten[0]+1, kordinaten[1]+1)) return false;
+		return true;
 	}
 
 }

@@ -7,17 +7,19 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
- * @author landarzar
+ * @author Fabianexe
  *
  */
 public abstract class SpielObjekt {
 
-	protected Karte karte;
+	protected LinkedList<Karte> karten;
 	protected LinkedList<Männchen> männchen;
+	
+	protected boolean isscored = false;
 	
 	protected SpielObjekt(Karte karte)
 	{
-		this.karte = karte;
+		this.karten.add(karte);
 		this.männchen = new LinkedList<Männchen>();
 	}
 	
@@ -25,10 +27,14 @@ public abstract class SpielObjekt {
 	public abstract void Scoring(boolean ende);
 	
 	public abstract void merge(SpielObjekt other);
+	
+	public abstract boolean isComplete();
+	
 	public boolean isBelegbar()
 	{
 		return männchen.isEmpty();
 	}
+	
 	public void addMännchen(Männchen man) {
 		this.männchen.add(man);
 	}
@@ -36,10 +42,10 @@ public abstract class SpielObjekt {
 		HashMap<Spieler, Integer> map = new HashMap<Spieler, Integer>();
 		for (Männchen man:this.männchen) {
 			if (map.containsKey(man.getSpieler())) {
-				map.put(man.getSpieler(), map.get(man.getSpieler())+1);
+				map.put(man.getSpieler(), map.get(man.getSpieler())+man.getWert());
 			}
 			else {
-				map.put(man.getSpieler(), 1);
+				map.put(man.getSpieler(), man.getWert());
 			}
 		}
 		LinkedList<Spieler> bestP = new LinkedList<Spieler>();

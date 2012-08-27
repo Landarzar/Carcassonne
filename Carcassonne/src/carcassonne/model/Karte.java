@@ -4,7 +4,7 @@
 package carcassonne.model;
 
 /**
- * @author landarzar
+ * @author Fabianexe
  *
  */
 public abstract class Karte {

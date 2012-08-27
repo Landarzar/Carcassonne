@@ -2,6 +2,10 @@ package carcassonne.model;
 
 import java.util.LinkedList;
 
+/**
+ * @author Fabianexe
+ *
+ */
 public class Stadt  extends SpielObjekt{
 	
 	public Stadt(Karte karte) {
@@ -17,14 +21,15 @@ public class Stadt  extends SpielObjekt{
 		throw new UnsupportedOperationException("Not implemented jet.");
 	}
 
+
 	@Override
-	public void Scoring() {
+	public void merge(SpielObjekt other) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void merge(SpielObjekt other) {
+	public void Scoring(boolean ende) {
 		// TODO Auto-generated method stub
 		
 	}

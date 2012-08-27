@@ -1,18 +1,19 @@
-/**
- * 
- */
 package carcassonne.model;
 
+import java.io.ObjectInputStream.GetField;
+
 /**
- * @author landarzar
+ * @author Fabianexe
  *
  */
 public class Männchen {
 	private Spieler spieler;
 	private SpielObjekt objekt;
+	private int wert;
 
-	public Männchen(Spieler spieler) {
+	public Männchen(Spieler spieler, int wert) {
 		this.spieler = spieler;
+		this.wert = wert;
 	}
 	
 	public Spieler getSpieler(){
@@ -28,4 +29,9 @@ public class Männchen {
 	public void release() {
 		
 	}
+
+	public int getWert() {
+		return this.wert;
+	}
+	 
 }

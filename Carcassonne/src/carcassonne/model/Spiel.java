@@ -4,6 +4,7 @@
 package carcassonne.model;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -16,6 +17,8 @@ public class Spiel {
 	
 	private static final int MOD = 1000;
 	private Stack<Karte> kartenstapel;
+	
+	private LinkedList<SpielObjekt> kloster;
 	
 	private static Spiel instance = null;
 	
@@ -32,6 +35,7 @@ public class Spiel {
 		map = new HashMap<Integer, Karte>();
 		this.kartenstapel = kartenstapel;
 		this.insertKarte(0, 0, this.kartenstapel.pop());
+		this.kloster = new LinkedList<SpielObjekt>();
 	}
 	
 	protected boolean hasPosi(int x, int y) {
@@ -67,6 +71,10 @@ public class Spiel {
     	this.insertKarte(x, y, aktKarte);
     	aktKarte.setKordinaten(x, y);
 		Karte[] nachbarn = new Karte[4];
+		if (aktKarte.getMiddle() instanceof Kloster) {
+			this.kloster.add(aktKarte.getMiddle());
+		}
+		
 		if(map.containsKey(calcKey(x, y-1))) 
 			nachbarn[0] = null;
 		else nachbarn[0] =map.get(calcKey(x, y-1));
@@ -81,6 +89,11 @@ public class Spiel {
 		else nachbarn[3] =map.get(calcKey(x-1, y));
 		
     	aktKarte.merge(nachbarn);
+    	for (SpielObjekt klos:this.kloster) {
+    		if (klos.isComplete()) {
+    			klos.Scoring(false);
+    		}
+    	}
 		return true;
 	}
 }
