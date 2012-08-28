@@ -4,7 +4,6 @@
 package carcassonne.model;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -82,7 +81,6 @@ public class Spiel
 	}
 	public HashMap<Integer, Boolean[]> getPositions() {
 		HashMap<Integer, Boolean[]>  ret = new HashMap<Integer, Boolean[]>();
-		HashSet<Integer> nichtMöglich = new HashSet<Integer>();
 		Karte akt = this.getAktuelleKarte();
 		for (Karte ka : this.map.values())
 		{
@@ -103,28 +101,32 @@ public class Spiel
 								break;
 							}
 						}
-						if (past) {
-							if (ret.containsKey(calcKey(pos))) {
-								ret.get(calcKey(pos))[j] = true;
+						if (ret.containsKey(calcKey(pos))) {
+							if(!past) {
+								ret.get(calcKey(pos))[j] = false;
 							}
-							else {
-								Boolean[] tutut = new Boolean[4];
-								for (int p=0;p<4;p++) {
-									tutut[p] = false;
-								}
-								tutut[j] = true;
-								ret.put(calcKey(pos), tutut);
+							
+						}
+						else {
+							Boolean[] tutut = new Boolean[4];
+							for (int p=0;p<4;p++) {
+								tutut[p] = true;
 							}
+							if(!past) {
+								tutut[j] = false;
+							}
+							ret.put(calcKey(pos), tutut);
 						}
 					}
 				}
-				else {
-					nichtMöglich.add(calcKey(pos));
-				}
 			}
 		}
-		for(Integer key:nichtMöglich) {
-			if(ret.containsKey(key)) {
+		for(Integer key:ret.keySet()) {
+			boolean delit = true;
+			for (int p=0;p<4;p++) {
+				delit = (delit && !ret.get(key)[p]);
+			}
+			if (delit) {
 				ret.remove(key);
 			}
 		}
