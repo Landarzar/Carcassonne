@@ -1,12 +1,9 @@
-/**
- * 
- */
 package carcassonne.model;
 
 import java.util.LinkedList;
 
 /**
- * @author landarzar
+ * @author Fabianexe
  *
  */
 public class Wiese  extends SpielObjekt {
@@ -19,16 +16,25 @@ public class Wiese  extends SpielObjekt {
 	
 	protected LinkedList<Stadt> städte;
 
-	@Override
-	public void Scoring() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void merge(SpielObjekt other) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void Scoring(boolean ende) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public boolean isComplete() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

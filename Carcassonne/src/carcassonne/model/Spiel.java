@@ -4,6 +4,7 @@
 package carcassonne.model;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -17,10 +18,28 @@ public class Spiel {
 	private static final int MOD = 1000;
 	private Stack<Karte> kartenstapel;
 	
-	public Spiel(Stack<Karte> kartenstapel) {
+	private LinkedList<SpielObjekt> kloster;
+	
+	private static Spiel instance = null;
+	
+	
+	public static Spiel getInstance() {
+		 return instance;
+	 }
+	
+	public static void makeInstance(Stack<Karte> kartenstapel) {
+		instance = new Spiel(kartenstapel);
+	}
+	
+	private Spiel(Stack<Karte> kartenstapel) {
 		map = new HashMap<Integer, Karte>();
 		this.kartenstapel = kartenstapel;
 		this.insertKarte(0, 0, this.kartenstapel.pop());
+		this.kloster = new LinkedList<SpielObjekt>();
+	}
+	
+	protected boolean hasPosi(int x, int y) {
+		return map.containsKey(calcKey(x, y));
 	}
 	
 	private void insertKarte(int x, int y,Karte karte)
@@ -41,7 +60,7 @@ public class Spiel {
      @param x ist die x Kordinate der aktuellen Karte
      @param y ist die y Karte der aktullen Karte
      @param z ist die Ausrichtung der aktuellen Karte wobei 0 nicht gedreht ist und x ist x mal nach rechts gedreht.
-     @return true wenn einfŸgen erfolgreich ansonsten False
+     @return true wenn einfï¿½gen erfolgreich ansonsten False
     **/
     public boolean put(int x, int y, int z) {
     	if(map.containsKey(calcKey(x, y)))
@@ -52,6 +71,10 @@ public class Spiel {
     	this.insertKarte(x, y, aktKarte);
     	aktKarte.setKordinaten(x, y);
 		Karte[] nachbarn = new Karte[4];
+		if (aktKarte.getMiddle() instanceof Kloster) {
+			this.kloster.add(aktKarte.getMiddle());
+		}
+		
 		if(map.containsKey(calcKey(x, y-1))) 
 			nachbarn[0] = null;
 		else nachbarn[0] =map.get(calcKey(x, y-1));
@@ -66,6 +89,11 @@ public class Spiel {
 		else nachbarn[3] =map.get(calcKey(x-1, y));
 		
     	aktKarte.merge(nachbarn);
+    	for (SpielObjekt klos:this.kloster) {
+    		if (klos.isComplete()) {
+    			klos.Scoring(false);
+    		}
+    	}
 		return true;
 	}
 }

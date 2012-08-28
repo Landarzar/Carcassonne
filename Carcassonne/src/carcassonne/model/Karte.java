@@ -4,7 +4,7 @@
 package carcassonne.model;
 
 /**
- * @author landarzar
+ * @author Fabianexe
  *
  */
 public abstract class Karte {
@@ -25,6 +25,12 @@ public abstract class Karte {
 		this.y = y;
 	}
 	
+	public int[] getKordinaten() {
+		int [] ret = new int[2];
+		ret[0] = this.x;
+		ret[1] = this.y;
+		return ret;
+	}
 	
 	public SpielObjekt[] getSide(int kante)
 	{
@@ -74,7 +80,7 @@ public abstract class Karte {
 		for(int j=0;j<4;j++) {
 			if (nachbarn[j] != null) {
 				SpielObjekt[] otherside = nachbarn[j].getSide((2+j)%4);
-				for(int i=0;i<4;i++) {
+				for(int i=0;i<3;i++) {
 					this.sides[j][i].merge(otherside[i]);
 				}
 			}
