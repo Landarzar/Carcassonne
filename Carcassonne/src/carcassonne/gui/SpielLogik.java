@@ -32,9 +32,11 @@ public class SpielLogik
 			{
 				Geometry geo = karte.getGeometry();
 				Vector3f vec = geo.getWorldTranslation();
-				GUIKartenAnklicker gka = new GUIKartenAnklicker	(karte, 0, vec.x + 0.4f, vec.y + 0.4f, 0f, vec.x + 0.4f, 0f, 0f, 0f, 0f, 0f);
+				GUIKartenAnklicker gka = new GUIKartenAnklicker	(karte, 0, vec.x + 0.4f, vec.y + 0.4f, 8f, vec.x + 0.4f, 0f, 8f, 2f, 2f, 8f);
 				
+				Geometry geo2 = new Geometry("fsdf", gka);
 				
+				screen.getManager().getRootNode().attachChild(geo2);
 			}
 		}
 
