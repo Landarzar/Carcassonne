@@ -10,6 +10,7 @@ public class Stadt  extends SpielObjekt{
 	protected LinkedList<Wiese> wiesen;
 	private boolean kathedrale;
 	private int wappen;
+	private boolean complet = false;
 	
 	
 	public Stadt(Karte karte, int wappen, Wiese[] wiesen) {
@@ -39,6 +40,7 @@ public class Stadt  extends SpielObjekt{
 				}
 			}
 		}
+		this.complet = true;
 		return true;
 	}
 
@@ -63,6 +65,11 @@ public class Stadt  extends SpielObjekt{
 		else {
 			this.kathedrale = false;
 		}
+		for(Wiese wi:this.wiesen) {
+			if (wi.getStädte().contains(other)) wi.getStädte().remove(other);
+			if(!wi.getStädte().contains(this)) wi.getStädte().add(this);
+		}
+		
 		this.changeref(other);
 	}
 
@@ -105,6 +112,11 @@ public class Stadt  extends SpielObjekt{
 	protected boolean isKathedrale() {
 		return kathedrale;
 	}
+
+	protected boolean getComplet() {
+		return complet;
+	}
+	
 	
 	
 }

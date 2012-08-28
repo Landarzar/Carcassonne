@@ -107,7 +107,13 @@ public class Spiel {
     			klos.Scoring(false);
     		}
     	}
-    	aktKarte.scoreAll();
+    	aktKarte.scoreAllComplet();
 		return true;
+	}
+    
+    public void endeGame() {
+		for (Karte ka:this.map.values()) {
+			ka.scoreAll();
+		}
 	}
 }

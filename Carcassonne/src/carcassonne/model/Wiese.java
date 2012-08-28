@@ -19,14 +19,50 @@ public class Wiese  extends SpielObjekt {
 
 	@Override
 	public void merge(SpielObjekt other) {
-		// TODO Auto-generated method stub
+		if (this == other) return;
+		for (Karte kat:other.getKarten()) {
+			if (!this.karten.contains(kat)) {
+				this.karten.add(kat);
+			}
+		}
+		for (Stadt st:((Wiese)other).getStädte()) {
+			if (!this.städte.contains(st)) {
+				this.städte.add(st);
+			}
+		}
+		for(Stadt st:this.städte) {
+			if (st.getWiesen().contains(other)) st.getWiesen().remove(other);
+			if(!st.getWiesen().contains(this)) st.getWiesen().add(this);
+		}
 		
+		this.changeref(other);
+	}
+		
+
+
+	protected LinkedList<Stadt> getStädte() {
+		return städte;
 	}
 
 
 	@Override
 	public void Scoring(boolean ende) {
-		// TODO Auto-generated method stub
+		if (this.isscored) return;
+		int sum = 0;
+		for(Stadt st:this.städte) {
+			if (st.getComplet()){
+				sum += 3;
+			}
+		}
+		
+		
+		for(Spieler sp:this.getBesitzer()) {
+			sp.addPunkte(sum);
+		}
+		for(Männchen man:this.männchen) {
+			man.release();
+		}
+		this.isscored = true;
 		
 	}
 
