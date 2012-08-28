@@ -11,11 +11,13 @@ public class Straße  extends SpielObjekt {
 	public Straße(Karte karte) {
 		super(karte);
 		this.wirtshaus = false;
+		this.typ = 2;
 	}
 	
 	public Straße(Karte karte, boolean wirtshaus) {
 		super(karte);
 		this.wirtshaus = wirtshaus;
+		this.typ = 2;
 	}
 	
 	protected boolean isWirtshaus() {

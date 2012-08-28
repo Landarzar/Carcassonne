@@ -22,13 +22,18 @@ public class Stadt  extends SpielObjekt{
 		}
 		this.wappen = wappen;
 		this.kathedrale = false;
+		this.typ = 0;
 	}
 	
-	public Stadt(Karte karte, int wappen, boolean kathedrale) {
+	public Stadt(Karte karte, int wappen, Wiese[] wiesen, boolean kathedrale) {
 		super(karte);
 
 		this.wiesen = new LinkedList<Wiese>();
+		for (Wiese wi:wiesen) {
+			this.wiesen.add(wi);
+		}
 		this.wappen = wappen;
+		this.typ = 0;
 	}
 	
 	public boolean isComplete()

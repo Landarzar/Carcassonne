@@ -4,6 +4,7 @@
 package carcassonne.model;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -57,6 +58,18 @@ public class Spiel
 	{
 		return (Integer) (MOD * x) + y;
 	}
+	private static Integer calcKey(int[] pos)
+	{
+		return (Integer) (MOD * pos[0]) + pos[1];
+	}
+	
+	protected static int[] decalcKey(int z)
+	{
+		int[] ret = new int[2];
+		ret[0] = z%MOD;
+		ret[1] = z/MOD;
+		return ret;
+	}
 
 	public Karte getAktuelleKarte()
 	{
@@ -66,6 +79,56 @@ public class Spiel
 	public List<Karte> getKarten()
 	{
 		return kartenstapel;
+	}
+	public HashMap<Integer, Boolean[]> getPositions() {
+		HashMap<Integer, Boolean[]>  ret = new HashMap<Integer, Boolean[]>();
+		HashSet<Integer> nichtMöglich = new HashSet<Integer>();
+		Karte akt = this.getAktuelleKarte();
+		for (Karte ka : this.map.values())
+		{
+			for (int i =0;i<4;i++) {
+				
+				int[] pos = ka.getKordinaten();
+				if (i==0) pos[1] -=1;
+				else if (i==1) pos[0] +=1;
+				else if (i==2) pos[1] +=1;
+				else pos[0] -=1;
+				
+				if (ka.isOside(i)) {
+					for (int j =0;j<4;j++) {
+						boolean past = true;
+						for (int k=0;k<3;k++) {
+							if(akt.getSide(j)[k].getTyp() != ka.getSide(i)[3-k].getTyp()) {
+								past = false;
+								break;
+							}
+						}
+						if (past) {
+							if (ret.containsKey(calcKey(pos))) {
+								ret.get(calcKey(pos))[j] = true;
+							}
+							else {
+								Boolean[] tutut = new Boolean[4];
+								for (int p=0;p<4;p++) {
+									tutut[p] = false;
+								}
+								tutut[j] = true;
+								ret.put(calcKey(pos), tutut);
+							}
+						}
+					}
+				}
+				else {
+					nichtMöglich.add(calcKey(pos));
+				}
+			}
+		}
+		for(Integer key:nichtMöglich) {
+			if(ret.containsKey(key)) {
+				ret.remove(key);
+			}
+		}
+		return ret;
 	}
 
 	/**

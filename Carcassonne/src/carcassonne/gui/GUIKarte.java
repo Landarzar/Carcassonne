@@ -3,6 +3,11 @@ package carcassonne.gui;
 import java.util.Random;
 
 import carcassonne.model.Karte;
+import carcassonne.model.Kloster;
+import carcassonne.model.SpielObjekt;
+import carcassonne.model.Stadt;
+import carcassonne.model.Straße;
+import carcassonne.model.Wiese;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
@@ -50,6 +55,7 @@ public class GUIKarte extends Karte
 	{
 		this.texture = texture;
 		this.init = false;
+		this.getFields();
 	}
 
 	private boolean init = false;
@@ -152,6 +158,760 @@ public class GUIKarte extends Karte
     public static Texture Street3;
     public static Texture Street4;
 
+    private void getFields() {
+		if (this.texture == City1Street2) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[1];
+			wis2[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = sr1;
+			side2[2] = wis2[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis2[0];
+			side3[1] = sr1;
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);	
+		}
+		else if (this.texture == City1Street2Gerade) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[1];
+			wis2[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = sr1;
+			side0[2] = wis2[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis2[0];
+			side1[1] = wis2[0];
+			side1[2] = wis2[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis2[0];
+			side2[1] = sr1;
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sr1);	
+		}
+		else if (this.texture == City1Street2Right) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[1];
+			wis2[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = sr1;
+			side1[2] = wis2[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis2[0];
+			side2[1] = sr1;
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(sr1);
+		}
+		else if (this.texture == City1Street3) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[2];
+			wis2[0] = new Wiese(this);
+			wis2[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			Straße sr2 = new Straße(this,false);
+			Straße sr3 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = sr1;
+			side0[2] = wis2[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis2[0];
+			side1[1] = sr2;
+			side1[2] = wis2[1];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis2[1];
+			side2[1] = sr3;
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+			
+		}
+		else if (this.texture == City1Wiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == City2Conn) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = sts1[0];
+			side1[1] = sts1[0];
+			side1[2] = sts1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[1];
+			side2[1] = wis1[1];
+			side2[2] = wis1[1];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City2SplitWiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[2];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			sts1[1] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[1];
+			side2[1] = sts1[1];
+			side2[2] = sts1[1];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);	
+		}
+		else if (this.texture == City2SplitWiese2) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[2];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			sts1[1] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = wis1[0];
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[1];
+			side3[1] = sts1[1];
+			side3[2] = sts1[1];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == City2Street2) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[1];
+			wis2[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = sts1[0];
+			side1[1] = sts1[0];
+			side1[2] = sts1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = sr1;
+			side2[2] = wis2[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis2[0];
+			side3[1] = sr1;
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(sr1);
+		}
+		else if (this.texture == City2WappenConn) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[1];
+			side3[1] = wis1[1];
+			side3[2] = wis1[1];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City2WappenStreet2) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Wiese[] wis2 = new Wiese[1];
+			wis2[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			wis1[0].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = sr1;
+			side0[2] = wis2[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis2[0];
+			side1[1] = sr1;
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == City2WappenWiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == City2Wiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == City3Street) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = sr1;
+			side1[2] = wis1[1];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City3WappenStreet) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = sr1;
+			side1[2] = wis1[1];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City3WappenWiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City3Wiese) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 0, wis1, false);
+			wis1[0].setStädte(sts1);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = sts1[0];
+			side1[1] = sts1[0];
+			side1[2] = sts1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = wis1[0];
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == City4Wappen) {
+			Wiese[] wis1 = new Wiese[0];
+			Stadt[] sts1 = new Stadt[1];
+			sts1[0] = new Stadt(this, 1, wis1, false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = sts1[0];
+			side0[1] = sts1[0];
+			side0[2] = sts1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = sts1[0];
+			side1[1] = sts1[0];
+			side1[2] = sts1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = sts1[0];
+			side2[1] = sts1[0];
+			side2[2] = sts1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = sts1[0];
+			side3[1] = sts1[0];
+			side3[2] = sts1[0];
+			this.setSide0(side3);
+			this.setMiddle(sts1[0]);
+		}
+		else if (this.texture == Kloster) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			Kloster klos = new Kloster(this);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = wis1[0];
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(klos);
+		}
+		else if (this.texture == KlosterStreet) {
+			Wiese[] wis1 = new Wiese[1];
+			wis1[0] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			Kloster klos = new Kloster(this);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = sr1;
+			side1[2] = wis1[0];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = wis1[0];
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(klos);
+		}
+		else if (this.texture == Street2) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = sr1;
+			side1[2] = wis1[1];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[1];
+			side2[1] = wis1[1];
+			side2[2] = wis1[1];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[1];
+			side3[1] = sr1;
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(sr1);
+		}
+		else if (this.texture == Street2Left) {
+			Wiese[] wis1 = new Wiese[2];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = wis1[0];
+			side0[2] = wis1[0];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[0];
+			side1[1] = wis1[0];
+			side1[2] = wis1[1];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[0];
+			side2[1] = sr1;
+			side2[2] = wis1[1];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[1];
+			side3[1] = sr1;
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(sr1);
+		}
+		else if (this.texture == Street3) {
+			Wiese[] wis1 = new Wiese[3];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			wis1[2] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			wis1[2].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			Straße sr2 = new Straße(this,false);
+			Straße sr3 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = sr1;
+			side0[2] = wis1[1];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[1];
+			side1[1] = sr2;
+			side1[2] = wis1[2];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[2];
+			side2[1] = sr3;
+			side2[2] = wis1[0];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[0];
+			side3[1] = wis1[0];
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		else if (this.texture == Street4) {
+			Wiese[] wis1 = new Wiese[4];
+			wis1[0] = new Wiese(this);
+			wis1[1] = new Wiese(this);
+			wis1[2] = new Wiese(this);
+			wis1[3] = new Wiese(this);
+			Stadt[] sts1 = new Stadt[0];
+			wis1[0].setStädte(sts1);
+			wis1[1].setStädte(sts1);
+			wis1[2].setStädte(sts1);
+			wis1[3].setStädte(sts1);
+			Straße sr1 = new Straße(this,false);
+			Straße sr2 = new Straße(this,false);
+			Straße sr3 = new Straße(this,false);
+			Straße sr4 = new Straße(this,false);
+			
+			SpielObjekt[] side0 = new SpielObjekt[3];
+			side0[0] = wis1[0];
+			side0[1] = sr1;
+			side0[2] = wis1[1];
+			this.setSide0(side0);
+			SpielObjekt[] side1 = new SpielObjekt[3];
+			side1[0] = wis1[1];
+			side1[1] = sr2;
+			side1[2] = wis1[2];
+			this.setSide0(side1);
+			SpielObjekt[] side2 = new SpielObjekt[3];
+			side2[0] = wis1[2];
+			side2[1] = sr3;
+			side2[2] = wis1[3];
+			this.setSide0(side2);
+			SpielObjekt[] side3 = new SpielObjekt[3];
+			side3[0] = wis1[3];
+			side3[1] = sr4;
+			side3[2] = wis1[0];
+			this.setSide0(side3);
+			this.setMiddle(wis1[0]);
+		}
+		
+		
+		
+	}
+    
     public static Texture getRandomTexture()
     {
         Random rand = new Random(System.currentTimeMillis());

@@ -14,7 +14,7 @@ public class Kloster extends SpielObjekt {
 	 */
 	public Kloster(Karte karte) {
 		super(karte);
-		// TODO Auto-generated constructor stub
+		this.typ = 3;
 	}
 
 	/*

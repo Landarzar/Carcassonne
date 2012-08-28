@@ -24,6 +24,7 @@ public abstract class Karte {
 		for (int i =0; i<4;i++) {
 			this.opensides[i] = true;
 		}
+		this.richtung = 0;
 	}
 	
 	public Karte(SpielObjekt[][] sides, SpielObjekt middle) {
@@ -33,12 +34,18 @@ public abstract class Karte {
 		}
 		this.sides = sides;
 		this.middle = middle;
+		this.richtung = 0;
 	}
 	
 	public void closeSide(int side) {
 		this.opensides[side] = false;
 	}
 	
+	
+	protected boolean isOside(int kante) {
+		return opensides[kante];
+	}
+
 	public void setRichtung(int richtung) {
 		this.richtung = richtung;	
 	}
@@ -114,7 +121,7 @@ public abstract class Karte {
 			if (nachbarn[j] != null) {
 				SpielObjekt[] otherside = nachbarn[j].getSide((2+j)%4);
 				for(int i=0;i<3;i++) {
-					this.sides[j][i].merge(otherside[i]);
+					this.getSide(j)[i].merge(otherside[2-i]);
 				}
 				this.opensides[j] = false;
 			}
@@ -125,7 +132,7 @@ public abstract class Karte {
 		LinkedList<SpielObjekt[]> ret = new LinkedList<SpielObjekt[]>();
 		for (int i=0; i<4;i++) {
 			if (this.opensides[i]) {
-				ret.add(this.sides[i]);
+				ret.add(this.getSide(i));
 			}
 		}
 		return ret;
@@ -135,7 +142,7 @@ public abstract class Karte {
 		for (int i=0; i<4;i++) {
 			if (!this.opensides[i]) {
 				for (int j=0;j<3;j++) {
-					if(this.sides[i][j].isComplete()) this.sides[i][j].Scoring(false);
+					if(this.getSide(i)[j].isComplete()) this.getSide(i)[j].Scoring(false);
 				}
 				
 			}

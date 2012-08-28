@@ -16,14 +16,23 @@ public abstract class SpielObjekt {
 	protected LinkedList<Männchen> männchen;
 	
 	protected boolean isscored = false;
+	protected int typ;
 	
 	protected SpielObjekt(Karte karte)
 	{
+		this.karten = new LinkedList<Karte>();
 		this.karten.add(karte);
 		this.männchen = new LinkedList<Männchen>();
 	}
 	
 	
+	
+	protected int getTyp() {
+		return typ;
+	}
+
+
+
 	public LinkedList<Karte> getKarten() {
 		return karten;
 	}

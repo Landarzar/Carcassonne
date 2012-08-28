@@ -12,6 +12,7 @@ public class Wiese  extends SpielObjekt {
 		super(karte);
 		
 		this.städte = new LinkedList<Stadt>();
+		this.typ = 1;
 	}
 	
 	protected LinkedList<Stadt> städte;
@@ -38,6 +39,13 @@ public class Wiese  extends SpielObjekt {
 		this.changeref(other);
 	}
 		
+
+
+	public void setStädte(Stadt[] städte) {
+		for(Stadt st:städte) {
+			this.städte.add(st);
+		}
+	}
 
 
 	protected LinkedList<Stadt> getStädte() {
