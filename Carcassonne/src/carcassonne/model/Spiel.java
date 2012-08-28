@@ -126,18 +126,11 @@ public class Spiel
 					// Alle 4 richtigen ausprobieren.
 					for (int j = 0; j < 4; j++)
 					{
-						System.out.println();
 						boolean past = true;
-
-						System.out.println("i:" + i + " j: " + j);
-						System.out.println("Seite gewählt: " + (4 + i - j + 2) % 4);
-
 						for (int k = 0; k < 3; k++)
 						{
 							if (akt.getSide((4 + i - j + 2) % 4)[k].getTyp() != ka.getSide(i)[2 - k].getTyp())
 							{
-
-								System.out.println("Seite failt: " + "i:" + i + " j: " + j + " k: " + k);
 								past = false;
 								break;
 							}
@@ -151,14 +144,6 @@ public class Spiel
 			}
 		}
 
-		for (Integer key : ret.keySet())
-		{
-			for (int j = 0; j < ret.get(key).length; j++)
-			{
-				Boolean bool = ret.get(key)[j];
-				System.out.println("" + key + ": " + bool);
-			}
-		}
 
 		for (Iterator<Integer> itr = ret.keySet().iterator(); itr.hasNext();)
 		{
@@ -172,14 +157,6 @@ public class Spiel
 			if (!delit)
 			{
 				itr.remove();
-			}
-		}
-		for (Integer key : ret.keySet())
-		{
-			for (int j = 0; j < ret.get(key).length; j++)
-			{
-				Boolean bool = ret.get(key)[j];
-				System.out.println("" + key + ": " + bool);
 			}
 		}
 

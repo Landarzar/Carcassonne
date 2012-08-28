@@ -22,13 +22,14 @@ public class GUIKartenAnklicker
 	public GUIKartenAnklicker(Point pos, GUIManager gui)
 	{
 		this.pos = pos;
-		
+		gui.getRootNode().updateGeometricState();
 		mesh = new Box(new Vector3f(pos.x * 0.62f, pos.y * 0.62f, 8f), 0.3f, 0.3f, 0.01f);
-		geo = new Geometry("muH", mesh);
+		geo = new GeoFu(pos, "muH", mesh);
 		material = new Material(gui.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
 		material.setColor("Color", ColorRGBA.Blue);
-		
+
 		geo.setMaterial(material);
+		System.out.println(geo.getLocalTransform().toString());
 	}
 
 	public Point getPoint()
@@ -45,7 +46,8 @@ public class GUIKartenAnklicker
 	}
 
 	/**
-	 * @param pos the pos to set
+	 * @param pos
+	 *            the pos to set
 	 */
 	public void setPos(Point pos)
 	{
@@ -61,7 +63,8 @@ public class GUIKartenAnklicker
 	}
 
 	/**
-	 * @param geo the geo to set
+	 * @param geo
+	 *            the geo to set
 	 */
 	public void setGeo(Geometry geo)
 	{
@@ -77,7 +80,8 @@ public class GUIKartenAnklicker
 	}
 
 	/**
-	 * @param material the material to set
+	 * @param material
+	 *            the material to set
 	 */
 	public void setMaterial(Material material)
 	{
@@ -93,7 +97,8 @@ public class GUIKartenAnklicker
 	}
 
 	/**
-	 * @param mesh the mesh to set
+	 * @param mesh
+	 *            the mesh to set
 	 */
 	public void setMesh(Mesh mesh)
 	{
@@ -103,5 +108,5 @@ public class GUIKartenAnklicker
 	private Point pos;
 	private Geometry geo;
 	private Material material;
-	private Mesh  mesh;
+	private Mesh mesh;
 }

@@ -69,6 +69,46 @@ public class SpielScreen
 		logik.showTriangles();
 	}
 
+	/**
+	 * @return the hud
+	 */
+	public HUD getHud()
+	{
+		return hud;
+	}
+
+	/**
+	 * @return the raster
+	 */
+	public GameRaster getRaster()
+	{
+		return raster;
+	}
+
+	/**
+	 * @return the spielfeld
+	 */
+	public Node getSpielfeld()
+	{
+		return spielfeld;
+	}
+
+	/**
+	 * @return the logik
+	 */
+	public SpielLogik getLogik()
+	{
+		return logik;
+	}
+
+	/**
+	 * @return the view
+	 */
+	public GUIKarte getView()
+	{
+		return view;
+	}
+
 	GUIKarte view;
 	private Spatial figure;
 
@@ -79,12 +119,14 @@ public class SpielScreen
 		// KarteView
 
 		view = (GUIKarte) spiel.getAktuelleKarte();
+		rootNode.updateGeometricState();
 		raster.insert(0, 0, view);
 		spiel.put(0, 0, 0);
 
 		GUIKarte view2 = (GUIKarte) spiel.getAktuelleKarte();
+		rootNode.updateGeometricState();
 		raster.insert(1, -1, view2);
-		spiel.put(1, -1, 0);
+		spiel.put(1, -1, 1);
 	}
 
 	private void initModel()

@@ -22,6 +22,8 @@ public class SpielLogik
 	
 	LinkedList<GUIKartenAnklicker> anklicker;
 
+	public static HashMap<Integer, Boolean[]> map;
+
 	public void showTriangles()
 	{
 		Spiel spiel = screen.getSpiel();
@@ -35,7 +37,9 @@ public class SpielLogik
 			if(bools[0] || bools[1] || bools[2] || bools[3])
 			{
 				GUIKartenAnklicker placeholder = new GUIKartenAnklicker(Spiel.decalcToPoint((int)key), screen.getManager());
+				screen.getManager().getRootNode().updateGeometricState();
 				screen.getManager().getRootNode().attachChild(placeholder.getGeo());
+				screen.getManager().getRootNode().updateGeometricState();
 			}
 		}
 	}

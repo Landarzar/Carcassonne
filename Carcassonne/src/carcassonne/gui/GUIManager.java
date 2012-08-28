@@ -3,6 +3,7 @@ package carcassonne.gui;
 import com.jme3.app.SimpleApplication;
 import com.jme3.font.BitmapFont;
 import com.jme3.input.MouseInput;
+import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
 
 public class GUIManager extends SimpleApplication
@@ -35,6 +36,8 @@ public class GUIManager extends SimpleApplication
     {
     	return mouseInput;    	
     }
+    
+    Node n,n2;
 
 	@Override
 	public void simpleInitApp()
@@ -45,7 +48,9 @@ public class GUIManager extends SimpleApplication
 	
     @Override
     public void simpleUpdate(float tpf) 
-    {
+    {	
+    	this.rootNode.updateGeometricState();
     	spielScreen.simpleUpdate(tpf);
+
     }	
 }

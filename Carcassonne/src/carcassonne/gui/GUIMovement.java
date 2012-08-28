@@ -9,12 +9,17 @@ import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.MouseAxisTrigger;
 import com.jme3.input.controls.MouseButtonTrigger;
+import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
+import com.jme3.math.Plane;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Sphere;
 
 public class GUIMovement
 {
@@ -22,9 +27,9 @@ public class GUIMovement
 	{
 		this.screen = screen;
 	}
-	
+
 	private SpielScreen screen;
-	
+
 	public void init()
 	{
 		InputManager inputManager = screen.getManager().getInputManager();
@@ -44,9 +49,10 @@ public class GUIMovement
 		inputManager.addMapping("move zoomout", new MouseAxisTrigger(MouseInput.AXIS_WHEEL, true), new KeyTrigger(KeyInput.KEY_Q));
 		inputManager.addMapping("move zoomin", new MouseAxisTrigger(MouseInput.AXIS_WHEEL, false), new KeyTrigger(KeyInput.KEY_E));
 		inputManager.addListener(keymoveListener, "move up", "move down", "move left", "move right", "move zoomin", "move zoomout", "mouse left down");
-	
+
+		initMark();
 	}
-	
+
 	public void update(float tpf)
 	{
 		Camera cam = screen.getManager().getCamera();
@@ -71,7 +77,6 @@ public class GUIMovement
 
 		cam.setLocation(pos);
 	}
-	
 
 	private boolean moveup = false;
 	private boolean movedown = false;
@@ -79,8 +84,6 @@ public class GUIMovement
 	private boolean moveleft = false;
 	private boolean mouseleftdown = false;
 
-
-	
 	private ActionListener keymoveListener = new ActionListener()
 	{
 
@@ -126,6 +129,20 @@ public class GUIMovement
 		}
 	};
 
+	public GeoFu selected;
+
+	/** A red ball that marks the last spot that was "hit" by the "shot". */
+	protected void initMark()
+	{
+		Sphere sphere = new Sphere(30, 30, 0.2f);
+		mark = new Geometry("BOOM!", sphere);
+		Material mark_mat = new Material(this.screen.getManager().getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+		mark_mat.setColor("Color", ColorRGBA.Red);
+		mark.setMaterial(mark_mat);
+	}
+
+	private Geometry mark;
+
 	private AnalogListener klickListener = new AnalogListener()
 	{
 
@@ -134,15 +151,16 @@ public class GUIMovement
 			Camera cam = screen.getManager().getCamera();
 			InputManager inputManager = screen.getManager().getInputManager();
 			Node rootNode = screen.getManager().getRootNode();
-			
+
 			if (name.equals("pick target"))
 			{
 				// Reset results list.
 				CollisionResults results = new CollisionResults();
 				// Convert screen click to 3d position
 				Vector2f click2d = inputManager.getCursorPosition();
-				Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 8f);
-				Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).subtractLocal(click3d);
+				Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
+				Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
+
 				// Aim the ray from the clicked spot forwards.
 				Ray ray = new Ray(click3d, dir);
 				// Collect intersections between ray and all nodes in results list.
@@ -155,23 +173,46 @@ public class GUIMovement
 					Vector3f pt = results.getCollision(i).getContactPoint();
 					String target = results.getCollision(i).getGeometry().getName();
 					System.out.println("Selection #" + i + ": " + target + " at " + pt + ", " + dist + " WU away.");
-					
+
 				}
 
 				if (results.getClosestCollision() != null)
 				{
 					System.out.println("Select: " + results.getClosestCollision().getGeometry().getName());
+
+					if (results.getClosestCollision().getGeometry() instanceof GeoFu)
+					{
+						GeoFu fu = (GeoFu) results.getClosestCollision().getGeometry();
+
+						// screen.getRaster().insert(i, i, null);
+
+						if (selected == null)
+						{
+							selected = fu;
+
+							fu.getMaterial().setColor("Color", ColorRGBA.Red);
+						}
+					}
 				}
 
-				// Use the results -- we rotate the selected geometry.
-				if (results.size() > 0)
+				if (selected != null)
 				{
-					// The closest result is the target that the player picked:
-					Geometry target = results.getClosestCollision().getGeometry();
-					// Here comes the action:
-					if (target.getName().equals("Red Box"))
+					Vector3f vec = new Vector3f();
+					Plane p = new Plane();
+					p.setPlanePoints(new Vector3f(1, 0, 0), new Vector3f(0, 1, 0), new Vector3f(1, 1, 0));
+					if (ray.intersectsWherePlane(p, vec))
 					{
-						target.rotate(0, -intensity, 0); // TODO
+						System.out.println("Iam at Pos: x: " + vec.x + " y: " + vec.y + " z: " + vec.z);
+						selected.setLocalTranslation(vec);
+						rootNode.attachChild(selected);
+						mark.center().setLocalTranslation(vec);
+						rootNode.attachChild(mark);
+
+						System.out.println("Mark World trans: " + mark.getWorldTransform().toString());
+						System.out.println("Mark World trans: " + mark.getLocalTransform().toString());
+
+						System.out.println("Sel World trans: " + selected.getWorldTransform().toString());
+						System.out.println("Sel World trans: " + selected.getLocalTransform().toString());
 					}
 				}
 			}
