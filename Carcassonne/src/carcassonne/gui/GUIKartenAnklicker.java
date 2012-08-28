@@ -23,7 +23,7 @@ public class GUIKartenAnklicker
 	{
 		this.pos = pos;
 		gui.getRootNode().updateGeometricState();
-		mesh = new Box(new Vector3f(pos.x * 0.62f, pos.y * 0.62f, 8f), 0.3f, 0.3f, 0.01f);
+		mesh = new Box(new Vector3f(0f, 0f, 0f), 0.3f, 0.3f, 0.01f);
 		geo = new GeoFu(pos, "muH", mesh);
 		material = new Material(gui.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
 		material.setColor("Color", ColorRGBA.Blue);

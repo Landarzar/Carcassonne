@@ -49,8 +49,6 @@ public class GUIMovement
 		inputManager.addMapping("move zoomout", new MouseAxisTrigger(MouseInput.AXIS_WHEEL, true), new KeyTrigger(KeyInput.KEY_Q));
 		inputManager.addMapping("move zoomin", new MouseAxisTrigger(MouseInput.AXIS_WHEEL, false), new KeyTrigger(KeyInput.KEY_E));
 		inputManager.addListener(keymoveListener, "move up", "move down", "move left", "move right", "move zoomin", "move zoomout", "mouse left down");
-
-		initMark();
 	}
 
 	public void update(float tpf)
@@ -131,18 +129,6 @@ public class GUIMovement
 
 	public GeoFu selected;
 
-	/** A red ball that marks the last spot that was "hit" by the "shot". */
-	protected void initMark()
-	{
-		Sphere sphere = new Sphere(30, 30, 0.2f);
-		mark = new Geometry("BOOM!", sphere);
-		Material mark_mat = new Material(this.screen.getManager().getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-		mark_mat.setColor("Color", ColorRGBA.Red);
-		mark.setMaterial(mark_mat);
-	}
-
-	private Geometry mark;
-
 	private AnalogListener klickListener = new AnalogListener()
 	{
 
@@ -199,20 +185,12 @@ public class GUIMovement
 				{
 					Vector3f vec = new Vector3f();
 					Plane p = new Plane();
-					p.setPlanePoints(new Vector3f(1, 0, 0), new Vector3f(0, 1, 0), new Vector3f(1, 1, 0));
+					p.setPlanePoints(new Vector3f(1, 0, 8), new Vector3f(0, 1, 8), new Vector3f(1, 1, 8));
 					if (ray.intersectsWherePlane(p, vec))
 					{
 						System.out.println("Iam at Pos: x: " + vec.x + " y: " + vec.y + " z: " + vec.z);
-						selected.setLocalTranslation(vec);
+						selected.center().setLocalTranslation(vec);
 						rootNode.attachChild(selected);
-						mark.center().setLocalTranslation(vec);
-						rootNode.attachChild(mark);
-
-						System.out.println("Mark World trans: " + mark.getWorldTransform().toString());
-						System.out.println("Mark World trans: " + mark.getLocalTransform().toString());
-
-						System.out.println("Sel World trans: " + selected.getWorldTransform().toString());
-						System.out.println("Sel World trans: " + selected.getLocalTransform().toString());
 					}
 				}
 			}

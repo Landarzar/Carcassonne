@@ -35,11 +35,11 @@ public class SpielLogik
 			Boolean[] bools = map.get(key);
 			
 			if(bools[0] || bools[1] || bools[2] || bools[3])
-			{
-				GUIKartenAnklicker placeholder = new GUIKartenAnklicker(Spiel.decalcToPoint((int)key), screen.getManager());
-				screen.getManager().getRootNode().updateGeometricState();
+			{ 
+				Point pos = Spiel.decalcToPoint((int)key);
+				GUIKartenAnklicker placeholder = new GUIKartenAnklicker(pos, screen.getManager());
 				screen.getManager().getRootNode().attachChild(placeholder.getGeo());
-				screen.getManager().getRootNode().updateGeometricState();
+				placeholder.getGeo().setLocalTranslation(pos.x * 0.62f, pos.y * 0.62f, 8f);
 			}
 		}
 	}
