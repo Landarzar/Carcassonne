@@ -56,7 +56,7 @@ public class SpielScreen
 
 		spielfeld = new Node("Spielfeld");
 		rootNode.attachChild(spielfeld);
-		CardFactory.Init(assetManager);
+		GUIKarte.Init(assetManager);
 		raster = new GameRaster(assetManager, spielfeld);
 		initGameStuff();
 		initInput();
@@ -65,19 +65,16 @@ public class SpielScreen
 		hud = new HUD(guiNode, guiFont, manager);
 	}
 
+	GUIKarte view;
+
 	private void initGameStuff()
 	{
 		// Init Startkarte
 
-		KarteView view = new KarteView(CardFactory.City1Street2Gerade);
-		KarteView view1 = new KarteView(CardFactory.getTexture());
-		KarteView view2 = new KarteView(CardFactory.getTexture());
-		KarteView view3 = new KarteView(CardFactory.getTexture());
+		// KarteView
+		view = new GUIKarte(GUIKarte.City1Street2Gerade);
 
 		raster.insert(0, 0, view);
-		raster.insert(0, 1, view1);
-		raster.insert(1, 1, view3);
-		raster.insert(0, 2, view2);
 
 		// Triangle triangle = new Triangle(-0.2f, 0f, 8f, -0.2f, 0.3f, 8f, -0.4f, 0.15f, 8f);
 		// geo = new Geometry("triangle", triangle);
@@ -226,8 +223,8 @@ public class SpielScreen
 				CollisionResults results = new CollisionResults();
 				// Convert screen click to 3d position
 				Vector2f click2d = inputManager.getCursorPosition();
-				Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
-				Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
+				Vector3f click3d = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 8f);
+				Vector3f dir = cam.getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).subtractLocal(click3d);
 				// Aim the ray from the clicked spot forwards.
 				Ray ray = new Ray(click3d, dir);
 				// Collect intersections between ray and all nodes in results list.
@@ -240,31 +237,12 @@ public class SpielScreen
 					Vector3f pt = results.getCollision(i).getContactPoint();
 					String target = results.getCollision(i).getGeometry().getName();
 					System.out.println("Selection #" + i + ": " + target + " at " + pt + ", " + dist + " WU away.");
+					
 				}
 
 				if (results.getClosestCollision() != null)
 				{
 					System.out.println("Select: " + results.getClosestCollision().getGeometry().getName());
-//					if (picked == null)
-//					{
-//
-//						Mesh shape = new Box(new Vector3f(1f, 1f, 8f), 0.3f, 0.3f, 0.01f);
-//						picked = new Geometry("bla", shape);
-//						Material material = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-//						material.setTexture("ColorMap", CardFactory.getTexture());
-//						material.getAdditionalRenderState().setBlendMode(BlendMode.Alpha);
-//						picked.setMaterial(material);
-//
-//						rootNode.attachChild(picked);
-//					} else
-//					{
-//						Vector3f vec = picked.getLocalTranslation();
-//
-//						System.out.println("MousePos: " + click3d.x + "," + click3d.y);
-//						System.out.println("VecPos: " + vec.x + "," + vec.y);
-//
-////						picked.setLocalTranslation(click3d.x, vec.y + click3d.y, 8f);
-//					}
 				}
 
 				// Use the results -- we rotate the selected geometry.

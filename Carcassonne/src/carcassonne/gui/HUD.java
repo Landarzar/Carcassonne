@@ -56,7 +56,7 @@ public class HUD
 		Mesh shape = new Box(new Vector3f((float)width - size, (float)height - size, 0f), size, size, 0f);
 		Geometry geometry = new Geometry("muh", shape);
 		Material material = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-		material.setTexture("ColorMap", CardFactory.getTexture());
+		material.setTexture("ColorMap", GUIKarte.getRandomTexture());
 		material.getAdditionalRenderState().setBlendMode(BlendMode.Alpha);
 		geometry.setMaterial(material);
 		
