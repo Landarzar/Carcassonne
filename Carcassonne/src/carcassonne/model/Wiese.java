@@ -33,7 +33,6 @@ public class Wiese  extends SpielObjekt {
 
 	@Override
 	public boolean isComplete() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

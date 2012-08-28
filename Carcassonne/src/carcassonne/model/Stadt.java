@@ -73,6 +73,7 @@ public class Stadt  extends SpielObjekt{
 		if (ende) {
 			if(!this.kathedrale) {
 				sum  = this.wappen +this.karten.size();
+			}
 		}
 		else {
 			sum  = this.wappen +this.karten.size();
@@ -86,7 +87,6 @@ public class Stadt  extends SpielObjekt{
 		}
 		for(Spieler sp:this.getBesitzer()) {
 			sp.addPunkte(sum);
-		}
 		}
 		for(Männchen man:this.männchen) {
 			man.release();
