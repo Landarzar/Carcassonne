@@ -11,7 +11,6 @@ public class GUIManager extends SimpleApplication
 	public GUIManager(AppSettings settings)
 	{
 		this.settings = settings;
-		// TODO Auto-generated constructor stub
 		spielScreen = new SpielScreen(this);
 	}
 	

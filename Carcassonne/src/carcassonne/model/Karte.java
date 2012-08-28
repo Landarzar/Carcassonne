@@ -32,6 +32,16 @@ public abstract class Karte {
 		return ret;
 	}
 	
+	public int getX()
+	{
+		return this.x;
+	}
+	
+	public int getY()
+	{
+		return this.y;
+	}
+	
 	public SpielObjekt[] getSide(int kante)
 	{
 		int side = (4+kante - this.richtung)%4;

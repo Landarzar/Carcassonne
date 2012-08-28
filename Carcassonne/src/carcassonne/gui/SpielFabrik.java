@@ -3,17 +3,16 @@
  */
 package carcassonne.gui;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
-import com.jme3.texture.Texture;
-
 import carcassonne.model.Karte;
 import carcassonne.model.Spiel;
+
+import com.jme3.texture.Texture;
 
 /**
  * @author Landarzar
@@ -46,7 +45,6 @@ public class SpielFabrik
 		textures.add(GUIKarte.Kloster);
 		textures.add(GUIKarte.Kloster);
 		textures.add(GUIKarte.City4Wappen);
-		textures.add(GUIKarte.City1Street2Gerade);
 		textures.add(GUIKarte.City1Street2Gerade);
 		textures.add(GUIKarte.City1Street2Gerade);
 		textures.add(GUIKarte.City1Street2Gerade);
@@ -113,7 +111,7 @@ public class SpielFabrik
 		textures.add(GUIKarte.Street3);
 		textures.add(GUIKarte.Street4);
 
-		Stack<GUIKarte> karten = new Stack<GUIKarte>();
+		Stack<Karte> karten = new Stack<Karte>();
 
 		for (Texture tex : textures)
 		{
@@ -123,17 +121,18 @@ public class SpielFabrik
 
 		final Random rand = new Random(System.currentTimeMillis());
 
-		Collections.sort(karten, new Comparator<GUIKarte>()
+		Collections.sort(karten, new Comparator<Karte>()
 		{
 
 			@Override
-			public int compare(GUIKarte o1, GUIKarte o2)
+			public int compare(Karte o1, Karte o2)
 			{
 				return (rand.nextInt(3) - 1);
 			}
 		});
 
-		return new Spiel(new Stack<Karte>());
+		Spiel.makeInstance(karten);
+		return Spiel.getInstance();
 	}
 
 }

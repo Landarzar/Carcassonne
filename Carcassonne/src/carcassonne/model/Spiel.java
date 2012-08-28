@@ -5,6 +5,7 @@ package carcassonne.model;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -38,7 +39,7 @@ public class Spiel {
 		this.kloster = new LinkedList<SpielObjekt>();
 	}
 	
-	protected boolean hasPosi(int x, int y) {
+	public boolean hasPosi(int x, int y) {
 		return map.containsKey(calcKey(x, y));
 	}
 	
@@ -55,6 +56,12 @@ public class Spiel {
     public Karte getAktuelleKarte() {
 		return this.kartenstapel.peek();
 	}
+    
+    public List<Karte> getKarten()
+    {
+    	return kartenstapel;
+    }
+    
     /**
      Legt die aktuelle karte auf position x,y mit ausrichtung z und entfernt sie vom kartenstapel
      @param x ist die x Kordinate der aktuellen Karte

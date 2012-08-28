@@ -35,6 +35,7 @@ public class GameRaster {
         }
         
         card.init(assetManager, node, x * 0.62f, y * 0.62f);
+        map.put(calcKey(x, y), card);
 
         return true;
     }
