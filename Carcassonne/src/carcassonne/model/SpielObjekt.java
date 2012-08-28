@@ -74,7 +74,6 @@ public abstract class SpielObjekt {
 				for(int j =0;i<3;j++) {
 					if (kat.getSide(i)[j] == other) kat.getSide(i)[j] = this;
 				}
-				
 			}
 			if (kat.getMiddle() == other) kat.setMiddle(this);
 		}

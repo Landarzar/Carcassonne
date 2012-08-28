@@ -10,6 +10,7 @@ public class Stadt  extends SpielObjekt{
 	protected LinkedList<Wiese> wiesen;
 	private boolean kathedrale;
 	private int wappen;
+	private boolean complet = false;
 	
 	
 	public Stadt(Karte karte, int wappen, Wiese[] wiesen) {
@@ -32,7 +33,15 @@ public class Stadt  extends SpielObjekt{
 	
 	public boolean isComplete()
 	{
-		throw new UnsupportedOperationException("Not implemented jet.");
+		for(Karte ka:this.karten) {
+			for(SpielObjekt[] sOs:ka.getopenSides()){
+				for (int i=0;i<3;i++) {
+					if (sOs[i] == this) return false;
+				}
+			}
+		}
+		this.complet = true;
+		return true;
 	}
 
 
@@ -50,6 +59,16 @@ public class Stadt  extends SpielObjekt{
 			}
 		}
 		this.wappen += ((Stadt)other).getWappen();
+		if (this.kathedrale || ((Stadt)other).isKathedrale()) {
+			this.kathedrale = true;
+		}
+		else {
+			this.kathedrale = false;
+		}
+		for(Wiese wi:this.wiesen) {
+			if (wi.getStädte().contains(other)) wi.getStädte().remove(other);
+			if(!wi.getStädte().contains(this)) wi.getStädte().add(this);
+		}
 		
 		this.changeref(other);
 	}
@@ -61,6 +80,7 @@ public class Stadt  extends SpielObjekt{
 		if (ende) {
 			if(!this.kathedrale) {
 				sum  = this.wappen +this.karten.size();
+			}
 		}
 		else {
 			sum  = this.wappen +this.karten.size();
@@ -75,7 +95,6 @@ public class Stadt  extends SpielObjekt{
 		for(Spieler sp:this.getBesitzer()) {
 			sp.addPunkte(sum);
 		}
-		}
 		for(Männchen man:this.männchen) {
 			man.release();
 		}
@@ -89,6 +108,15 @@ public class Stadt  extends SpielObjekt{
 	protected int getWappen() {
 		return wappen;
 	}
+
+	protected boolean isKathedrale() {
+		return kathedrale;
+	}
+
+	protected boolean getComplet() {
+		return complet;
+	}
+	
 	
 	
 }

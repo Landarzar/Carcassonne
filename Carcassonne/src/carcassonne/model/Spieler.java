@@ -23,7 +23,5 @@ public class Spieler {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 }

@@ -1,6 +1,5 @@
 package carcassonne.model;
 
-
 /**
  * @author Fabianexe
  *
