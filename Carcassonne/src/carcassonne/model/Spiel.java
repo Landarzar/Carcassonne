@@ -77,23 +77,37 @@ public class Spiel {
 		
 		if(map.containsKey(calcKey(x, y-1))) 
 			nachbarn[0] = null;
-		else nachbarn[0] =map.get(calcKey(x, y-1));
+		else {
+			nachbarn[0] =map.get(calcKey(x, y-1));
+			nachbarn[0].closeSide(2);
+		}
 		if(map.containsKey(calcKey(x+1, y))) 
 			nachbarn[1] = null;
-		else nachbarn[1] =map.get(calcKey(x+1, y));
+		else {
+			nachbarn[1] =map.get(calcKey(x+1, y));
+			nachbarn[1].closeSide(3);
+		}
 		if(map.containsKey(calcKey(x, y+1))) 
 			nachbarn[2] = null;
-		else nachbarn[2] =map.get(calcKey(x, y+1));
+		else {
+			nachbarn[2] =map.get(calcKey(x, y+1));
+			nachbarn[2].closeSide(0);
+		}
 		if(map.containsKey(calcKey(x-1, y))) 
 			nachbarn[3] = null;
-		else nachbarn[3] =map.get(calcKey(x-1, y));
+		else {
+			nachbarn[3] =map.get(calcKey(x-1, y));
+			nachbarn[3].closeSide(1);
+		}
 		
     	aktKarte.merge(nachbarn);
+    	
     	for (SpielObjekt klos:this.kloster) {
     		if (klos.isComplete()) {
     			klos.Scoring(false);
     		}
     	}
+    	aktKarte.scoreAll();
 		return true;
 	}
 }

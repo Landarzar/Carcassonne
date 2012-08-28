@@ -32,7 +32,14 @@ public class Stadt  extends SpielObjekt{
 	
 	public boolean isComplete()
 	{
-		throw new UnsupportedOperationException("Not implemented jet.");
+		for(Karte ka:this.karten) {
+			for(SpielObjekt[] sOs:ka.getopenSides()){
+				for (int i=0;i<3;i++) {
+					if (sOs[i] == this) return false;
+				}
+			}
+		}
+		return true;
 	}
 
 
@@ -50,7 +57,12 @@ public class Stadt  extends SpielObjekt{
 			}
 		}
 		this.wappen += ((Stadt)other).getWappen();
-		
+		if (this.kathedrale || ((Stadt)other).isKathedrale()) {
+			this.kathedrale = true;
+		}
+		else {
+			this.kathedrale = false;
+		}
 		this.changeref(other);
 	}
 
@@ -88,6 +100,10 @@ public class Stadt  extends SpielObjekt{
 
 	protected int getWappen() {
 		return wappen;
+	}
+
+	protected boolean isKathedrale() {
+		return kathedrale;
 	}
 	
 	

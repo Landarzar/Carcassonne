@@ -1,7 +1,5 @@
 package carcassonne.model;
 
-import java.io.ObjectInputStream.GetField;
-
 /**
  * @author Fabianexe
  *

@@ -3,6 +3,8 @@
  */
 package carcassonne.model;
 
+import java.util.LinkedList;
+
 /**
  * @author Fabianexe
  *
@@ -15,6 +17,27 @@ public abstract class Karte {
 
 	private SpielObjekt middle;
 	private int richtung ;
+	private boolean[] opensides;
+	
+	public Karte() {
+		this.opensides = new boolean[4];
+		for (int i =0; i<4;i++) {
+			this.opensides[i] = true;
+		}
+	}
+	
+	public Karte(SpielObjekt[][] sides, SpielObjekt middle) {
+		this.opensides = new boolean[4];
+		for (int i =0; i<4;i++) {
+			this.opensides[i] = true;
+		}
+		this.sides = sides;
+		this.middle = middle;
+	}
+	
+	public void closeSide(int side) {
+		this.opensides[side] = false;
+	}
 	
 	public void setRichtung(int richtung) {
 		this.richtung = richtung;	
@@ -83,7 +106,29 @@ public abstract class Karte {
 				for(int i=0;i<3;i++) {
 					this.sides[j][i].merge(otherside[i]);
 				}
+				this.opensides[j] = false;
 			}
 		}
+	}
+	
+	protected LinkedList<SpielObjekt[]> getopenSides() {
+		LinkedList<SpielObjekt[]> ret = new LinkedList<SpielObjekt[]>();
+		for (int i=0; i<4;i++) {
+			if (this.opensides[i]) {
+				ret.add(this.sides[i]);
+			}
+		}
+		return ret;
+	}
+	
+	protected void scoreAll() {
+		for (int i=0; i<4;i++) {
+			if (!this.opensides[i]) {
+				for (int j=0;j<3;j++) {
+					if(this.sides[i][j].isComplete()) this.sides[i][j].Scoring(false);
+				}
+				
+			}
+		} 
 	}
 }
