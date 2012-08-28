@@ -3,7 +3,9 @@
  */
 package carcassonne.model;
 
+import java.awt.Point;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -38,7 +40,6 @@ public class Spiel
 	{
 		map = new HashMap<Integer, Karte>();
 		this.kartenstapel = kartenstapel;
-		this.insertKarte(0, 0, this.kartenstapel.pop());
 		this.kloster = new LinkedList<SpielObjekt>();
 	}
 
@@ -57,79 +58,131 @@ public class Spiel
 	{
 		return (Integer) (MOD * x) + y;
 	}
+
 	private static Integer calcKey(int[] pos)
 	{
 		return (Integer) (MOD * pos[0]) + pos[1];
 	}
-	
+
 	protected static int[] decalcKey(int z)
 	{
 		int[] ret = new int[2];
-		ret[0] = z%MOD;
-		ret[1] = z/MOD;
+		ret[0] = (z % MOD) > 500 ? z / MOD + 1 : z / MOD;
+		ret[1] = z - ((z % MOD) > 500 ? z / MOD + 1 : z / MOD) * MOD;
 		return ret;
+	}
+
+	public static Point decalcToPoint(int z)
+	{
+		return new Point((z % MOD) > 500 ? z / MOD + 1 : z / MOD, z - ((z % MOD) > 500 ? z / MOD + 1 : z / MOD) * MOD);
 	}
 
 	public Karte getAktuelleKarte()
 	{
 		return this.kartenstapel.peek();
 	}
-	
+
 	public List<Karte> getKarten()
 	{
 		return kartenstapel;
 	}
-	public HashMap<Integer, Boolean[]> getPositions() {
-		HashMap<Integer, Boolean[]>  ret = new HashMap<Integer, Boolean[]>();
+
+	/**
+	 * Berechnet für die aktuelle Karte alle möglichen Positionen.
+	 * 
+	 * @return
+	 */
+	public HashMap<Integer, Boolean[]> getPositions()
+	{
+		HashMap<Integer, Boolean[]> ret = new HashMap<Integer, Boolean[]>();
 		Karte akt = this.getAktuelleKarte();
 		for (Karte ka : this.map.values())
 		{
-			for (int i =0;i<4;i++) {
-				
+			for (int i = 0; i < 4; i++)
+			{
+
 				int[] pos = ka.getKordinaten();
-				if (i==0) pos[1] -=1;
-				else if (i==1) pos[0] +=1;
-				else if (i==2) pos[1] +=1;
-				else pos[0] -=1;
-				
-				if (ka.isOside(i)) {
-					for (int j =0;j<4;j++) {
+				if (i == 0)
+					pos[1] += 1;
+				else if (i == 1)
+					pos[0] += 1;
+				else if (i == 2)
+					pos[1] -= 1;
+				else
+					pos[0] -= 1;
+
+				if (ka.isOpenSide(i))
+				{
+					if (!ret.containsKey(calcKey(pos)))
+					{
+						Boolean[] tutut = new Boolean[4];
+						for (int p = 0; p < 4; p++)
+						{
+							tutut[p] = true;
+						}
+						ret.put(calcKey(pos), tutut);
+					}
+
+					// Alle 4 richtigen ausprobieren.
+					for (int j = 0; j < 4; j++)
+					{
+						System.out.println();
 						boolean past = true;
-						for (int k=0;k<3;k++) {
-							if(akt.getSide(j)[k].getTyp() != ka.getSide(i)[3-k].getTyp()) {
+
+						System.out.println("i:" + i + " j: " + j);
+						System.out.println("Seite gewählt: " + (4 + i - j + 2) % 4);
+
+						for (int k = 0; k < 3; k++)
+						{
+							if (akt.getSide((4 + i - j + 2) % 4)[k].getTyp() != ka.getSide(i)[2 - k].getTyp())
+							{
+
+								System.out.println("Seite failt: " + "i:" + i + " j: " + j + " k: " + k);
 								past = false;
 								break;
 							}
 						}
-						if (ret.containsKey(calcKey(pos))) {
-							if(!past) {
-								ret.get(calcKey(pos))[j] = false;
-							}
-							
-						}
-						else {
-							Boolean[] tutut = new Boolean[4];
-							for (int p=0;p<4;p++) {
-								tutut[p] = true;
-							}
-							if(!past) {
-								tutut[j] = false;
-							}
-							ret.put(calcKey(pos), tutut);
+						if (!past)
+						{
+							ret.get(calcKey(pos))[j] = false;
 						}
 					}
 				}
 			}
 		}
-		for(Integer key:ret.keySet()) {
-			boolean delit = true;
-			for (int p=0;p<4;p++) {
-				delit = (delit && !ret.get(key)[p]);
-			}
-			if (delit) {
-				ret.remove(key);
+
+		for (Integer key : ret.keySet())
+		{
+			for (int j = 0; j < ret.get(key).length; j++)
+			{
+				Boolean bool = ret.get(key)[j];
+				System.out.println("" + key + ": " + bool);
 			}
 		}
+
+		for (Iterator<Integer> itr = ret.keySet().iterator(); itr.hasNext();)
+		{
+			Integer key = itr.next();
+
+			boolean delit = false;
+			for (int p = 0; p < 4; p++)
+			{
+				delit = (delit || ret.get(key)[p]);
+			}
+			if (!delit)
+			{
+				itr.remove();
+			}
+		}
+		for (Integer key : ret.keySet())
+		{
+			for (int j = 0; j < ret.get(key).length; j++)
+			{
+				Boolean bool = ret.get(key)[j];
+				System.out.println("" + key + ": " + bool);
+			}
+		}
+
 		return ret;
 	}
 
@@ -159,28 +212,28 @@ public class Spiel
 			this.kloster.add(aktKarte.getMiddle());
 		}
 
-		if (map.containsKey(calcKey(x, y - 1)))
+		if (!map.containsKey(calcKey(x, y + 1)))
 			nachbarn[0] = null;
 		else
 		{
-			nachbarn[0] = map.get(calcKey(x, y - 1));
+			nachbarn[0] = map.get(calcKey(x, y + 1));
 			nachbarn[0].closeSide(2);
 		}
-		if (map.containsKey(calcKey(x + 1, y)))
+		if (!map.containsKey(calcKey(x + 1, y)))
 			nachbarn[1] = null;
 		else
 		{
 			nachbarn[1] = map.get(calcKey(x + 1, y));
 			nachbarn[1].closeSide(3);
 		}
-		if (map.containsKey(calcKey(x, y + 1)))
+		if (!map.containsKey(calcKey(x, y - 1)))
 			nachbarn[2] = null;
 		else
 		{
-			nachbarn[2] = map.get(calcKey(x, y + 1));
+			nachbarn[2] = map.get(calcKey(x, y - 1));
 			nachbarn[2].closeSide(0);
 		}
-		if (map.containsKey(calcKey(x - 1, y)))
+		if (!map.containsKey(calcKey(x - 1, y)))
 			nachbarn[3] = null;
 		else
 		{

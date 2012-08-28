@@ -33,6 +33,26 @@ public class SpielFabrik
 	{
 
 	}
+	
+	public static Spiel createAbnormalGame()
+	{
+		LinkedList<Texture> textures = new LinkedList<Texture>();
+
+		textures.add(GUIKarte.City1Street2Right);
+		textures.add(GUIKarte.City1Street3);
+		
+		Stack<Karte> karten = new Stack<Karte>();
+
+		for (Texture tex : textures)
+		{
+			GUIKarte card = new GUIKarte(tex);
+			karten.push(card);
+		}
+
+
+		Spiel.makeInstance(karten);
+		return Spiel.getInstance();
+	}
 
 	public static Spiel createNormalGame()
 	{
@@ -120,16 +140,8 @@ public class SpielFabrik
 		}
 
 		final Random rand = new Random(System.currentTimeMillis());
-
-		Collections.sort(karten, new Comparator<Karte>()
-		{
-
-			@Override
-			public int compare(Karte o1, Karte o2)
-			{
-				return (rand.nextInt(3) - 1);
-			}
-		});
+		
+		Collections.shuffle(karten, rand);
 
 		Spiel.makeInstance(karten);
 		return Spiel.getInstance();

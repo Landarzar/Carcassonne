@@ -3,41 +3,105 @@
  */
 package carcassonne.gui;
 
+import java.awt.Point;
+
+import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.Mesh;
+import com.jme3.scene.shape.Box;
+
 /**
  * @author Landarzar
  * 
  */
-public class GUIKartenAnklicker extends Triangle
+public class GUIKartenAnklicker
 {
 
-	public GUIKartenAnklicker(GUIKarte karte, int seite, float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3)
+	public GUIKartenAnklicker(Point pos, GUIManager gui)
 	{
-		super(x1, y1, z1, x2, y2, z2, x3, y3, z3);
-
-		this.karte = karte;
-		this.seite = seite;
+		this.pos = pos;
+		
+		mesh = new Box(new Vector3f(pos.x * 0.62f, pos.y * 0.62f, 8f), 0.3f, 0.3f, 0.01f);
+		geo = new Geometry("muH", mesh);
+		material = new Material(gui.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+		material.setColor("Color", ColorRGBA.Blue);
+		
+		geo.setMaterial(material);
 	}
 
-	public GUIKarte getKarte()
+	public Point getPoint()
 	{
-		return karte;
+		return pos;
 	}
 
-	public void setKarte(GUIKarte karte)
+	/**
+	 * @return the pos
+	 */
+	public Point getPos()
 	{
-		this.karte = karte;
+		return pos;
 	}
 
-	public int getSeite()
+	/**
+	 * @param pos the pos to set
+	 */
+	public void setPos(Point pos)
 	{
-		return seite;
+		this.pos = pos;
 	}
 
-	public void setSeite(int seite)
+	/**
+	 * @return the geo
+	 */
+	public Geometry getGeo()
 	{
-		this.seite = seite;
+		return geo;
 	}
 
-	private GUIKarte karte;
-	private int seite;
+	/**
+	 * @param geo the geo to set
+	 */
+	public void setGeo(Geometry geo)
+	{
+		this.geo = geo;
+	}
+
+	/**
+	 * @return the material
+	 */
+	public Material getMaterial()
+	{
+		return material;
+	}
+
+	/**
+	 * @param material the material to set
+	 */
+	public void setMaterial(Material material)
+	{
+		this.material = material;
+	}
+
+	/**
+	 * @return the mesh
+	 */
+	public Mesh getMesh()
+	{
+		return mesh;
+	}
+
+	/**
+	 * @param mesh the mesh to set
+	 */
+	public void setMesh(Mesh mesh)
+	{
+		this.mesh = mesh;
+	}
+
+	private Point pos;
+	private Geometry geo;
+	private Material material;
+	private Mesh  mesh;
 }

@@ -21,6 +21,7 @@ public class SpielScreen
 	}
 
 	private GUIManager manager;
+
 	public GUIManager getManager()
 	{
 		return manager;
@@ -55,14 +56,15 @@ public class SpielScreen
 		rootNode.attachChild(spielfeld);
 		GUIKarte.Init(assetManager);
 		raster = new GameRaster(assetManager, spielfeld);
-		initGameStuff();
 		movementManager.init();
 		initModel();
-		
-		setSpiel(SpielFabrik.createNormalGame());
 
-		hud = new HUD(guiNode, guiFont, manager,this);
-		
+		setSpiel(SpielFabrik.createNormalGame());
+//		setSpiel(SpielFabrik.createAbnormalGame());
+		initGameStuff();
+
+		hud = new HUD(guiNode, guiFont, manager, this);
+
 		logik = new SpielLogik(this);
 		logik.showTriangles();
 	}
@@ -75,16 +77,14 @@ public class SpielScreen
 		// Init Startkarte
 
 		// KarteView
-		view = new GUIKarte(GUIKarte.City1Street2Gerade);
 
+		view = (GUIKarte) spiel.getAktuelleKarte();
 		raster.insert(0, 0, view);
+		spiel.put(0, 0, 0);
 
-		// Triangle triangle = new Triangle(-0.2f, 0f, 8f, -0.2f, 0.3f, 8f, -0.4f, 0.15f, 8f);
-		// geo = new Geometry("triangle", triangle);
-		// Material material = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-		// material.setColor("Color", ColorRGBA.Red);
-		// geo.setMaterial(material);
-		// spielfeld.attachChild(geo);
+		GUIKarte view2 = (GUIKarte) spiel.getAktuelleKarte();
+		raster.insert(1, -1, view2);
+		spiel.put(1, -1, 0);
 	}
 
 	private void initModel()

@@ -42,7 +42,7 @@ public abstract class Karte {
 	}
 	
 	
-	protected boolean isOside(int kante) {
+	protected boolean isOpenSide(int kante) {
 		return opensides[kante];
 	}
 

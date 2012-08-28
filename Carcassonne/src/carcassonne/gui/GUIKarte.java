@@ -178,17 +178,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = sr1;
 			side2[2] = wis2[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis2[0];
 			side3[1] = sr1;
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);	
 		}
 		else if (this.texture == City1Street2Gerade) {
@@ -210,17 +210,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis2[0];
 			side1[1] = wis2[0];
 			side1[2] = wis2[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis2[0];
 			side2[1] = sr1;
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sr1);	
 		}
 		else if (this.texture == City1Street2Right) {
@@ -242,17 +242,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = sr1;
 			side1[2] = wis2[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis2[0];
 			side2[1] = sr1;
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sr1);
 		}
 		else if (this.texture == City1Street3) {
@@ -277,17 +277,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis2[0];
 			side1[1] = sr2;
 			side1[2] = wis2[1];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis2[1];
 			side2[1] = sr3;
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 			
 		}
@@ -307,17 +307,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == City2Conn) {
@@ -338,17 +338,17 @@ public class GUIKarte extends Karte
 			side1[0] = sts1[0];
 			side1[1] = sts1[0];
 			side1[2] = sts1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[1];
 			side2[1] = wis1[1];
 			side2[2] = wis1[1];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City2SplitWiese) {
@@ -368,17 +368,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[1];
 			side2[1] = sts1[1];
 			side2[2] = sts1[1];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);	
 		}
 		else if (this.texture == City2SplitWiese2) {
@@ -398,17 +398,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = wis1[0];
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[1];
 			side3[1] = sts1[1];
 			side3[2] = sts1[1];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == City2Street2) {
@@ -430,17 +430,17 @@ public class GUIKarte extends Karte
 			side1[0] = sts1[0];
 			side1[1] = sts1[0];
 			side1[2] = sts1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = sr1;
 			side2[2] = wis2[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis2[0];
 			side3[1] = sr1;
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sr1);
 		}
 		else if (this.texture == City2WappenConn) {
@@ -461,17 +461,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[1];
 			side3[1] = wis1[1];
 			side3[2] = wis1[1];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City2WappenStreet2) {
@@ -493,17 +493,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis2[0];
 			side1[1] = sr1;
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == City2WappenWiese) {
@@ -522,17 +522,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == City2Wiese) {
@@ -551,17 +551,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == City3Street) {
@@ -583,17 +583,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = sr1;
 			side1[2] = wis1[1];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City3WappenStreet) {
@@ -615,17 +615,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = sr1;
 			side1[2] = wis1[1];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City3WappenWiese) {
@@ -644,17 +644,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City3Wiese) {
@@ -673,17 +673,17 @@ public class GUIKarte extends Karte
 			side1[0] = sts1[0];
 			side1[1] = sts1[0];
 			side1[2] = sts1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = wis1[0];
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == City4Wappen) {
@@ -700,17 +700,17 @@ public class GUIKarte extends Karte
 			side1[0] = sts1[0];
 			side1[1] = sts1[0];
 			side1[2] = sts1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = sts1[0];
 			side2[1] = sts1[0];
 			side2[2] = sts1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = sts1[0];
 			side3[1] = sts1[0];
 			side3[2] = sts1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sts1[0]);
 		}
 		else if (this.texture == Kloster) {
@@ -729,17 +729,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = wis1[0];
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(klos);
 		}
 		else if (this.texture == KlosterStreet) {
@@ -759,17 +759,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = sr1;
 			side1[2] = wis1[0];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = wis1[0];
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(klos);
 		}
 		else if (this.texture == Street2) {
@@ -790,17 +790,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = sr1;
 			side1[2] = wis1[1];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[1];
 			side2[1] = wis1[1];
 			side2[2] = wis1[1];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[1];
 			side3[1] = sr1;
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sr1);
 		}
 		else if (this.texture == Street2Left) {
@@ -821,17 +821,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[0];
 			side1[1] = wis1[0];
 			side1[2] = wis1[1];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[0];
 			side2[1] = sr1;
 			side2[2] = wis1[1];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[1];
 			side3[1] = sr1;
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(sr1);
 		}
 		else if (this.texture == Street3) {
@@ -856,17 +856,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[1];
 			side1[1] = sr2;
 			side1[2] = wis1[2];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[2];
 			side2[1] = sr3;
 			side2[2] = wis1[0];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[0];
 			side3[1] = wis1[0];
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		else if (this.texture == Street4) {
@@ -894,17 +894,17 @@ public class GUIKarte extends Karte
 			side1[0] = wis1[1];
 			side1[1] = sr2;
 			side1[2] = wis1[2];
-			this.setSide0(side1);
+			this.setSide1(side1);
 			SpielObjekt[] side2 = new SpielObjekt[3];
 			side2[0] = wis1[2];
 			side2[1] = sr3;
 			side2[2] = wis1[3];
-			this.setSide0(side2);
+			this.setSide2(side2);
 			SpielObjekt[] side3 = new SpielObjekt[3];
 			side3[0] = wis1[3];
 			side3[1] = sr4;
 			side3[2] = wis1[0];
-			this.setSide0(side3);
+			this.setSide3(side3);
 			this.setMiddle(wis1[0]);
 		}
 		

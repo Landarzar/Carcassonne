@@ -1,5 +1,7 @@
 package carcassonne.gui;
 
+import java.awt.Point;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,24 +24,20 @@ public class SpielLogik
 
 	public void showTriangles()
 	{
-		List<Karte> karten = screen.getSpiel().getKarten();
 		Spiel spiel = screen.getSpiel();
 
-		for (Karte k : karten)
+		HashMap<Integer, Boolean[]> map =  spiel.getPositions();
+		
+		for (Integer key : map.keySet())
 		{
-			GUIKarte karte = (GUIKarte) k;
-			if (spiel.hasPosi(karte.getX()+1, karte.getY()))
+			Boolean[] bools = map.get(key);
+			
+			if(bools[0] || bools[1] || bools[2] || bools[3])
 			{
-				Geometry geo = karte.getGeometry();
-				Vector3f vec = geo.getWorldTranslation();
-				GUIKartenAnklicker gka = new GUIKartenAnklicker	(karte, 0, vec.x + 0.4f, vec.y + 0.4f, 8f, vec.x + 0.4f, 0f, 8f, 2f, 2f, 8f);
-				
-				Geometry geo2 = new Geometry("fsdf", gka);
-				
-				screen.getManager().getRootNode().attachChild(geo2);
+				GUIKartenAnklicker placeholder = new GUIKartenAnklicker(Spiel.decalcToPoint((int)key), screen.getManager());
+				screen.getManager().getRootNode().attachChild(placeholder.getGeo());
 			}
 		}
-
 	}
 
 	private SpielScreen screen;
